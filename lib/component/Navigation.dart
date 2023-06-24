@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../view/user/PersonalView.dart';
+import '../view/post/PostHomeView.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({super.key});
@@ -13,9 +14,7 @@ class NavigationState extends State<Navigation> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    const Center(
-      child: Text('社区'),
-    ),
+    const PostHomeView(),
     const Center(
       child: Text('导览'),
     ),
