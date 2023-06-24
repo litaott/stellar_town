@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../view/user/PersonalView.dart';
 
+/// 底部导航栏组件
+/// @author tt
+/// @date 2023-06-20
+
 class Navigation extends StatefulWidget {
   const Navigation({super.key});
 

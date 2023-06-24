@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// 用户简短信息组件
+/// @author tt
+/// @date 2023-06-21
+
 class UserInfoBrief extends StatefulWidget {
   const UserInfoBrief({Key? key}) : super(key: key);
 
@@ -18,7 +22,6 @@ class UserInfoBriefState extends State<UserInfoBrief> {
       ),
       title: const Text('sing_me_to_a_flow'),
       subtitle: const Text('令人愤慨的不是受苦/而是受这苦没理由'),
-      trailing: const Icon(Icons.keyboard_arrow_right),
     );
   }
 }

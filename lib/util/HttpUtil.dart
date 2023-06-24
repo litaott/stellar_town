@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:stellar_town/constant/Url.dart';
 
+/// Http请求工具类
+/// @author tt
+/// @date 2023-06-20
+
 class HttpUtil {
   // Initialize the default options
   static final BaseOptions defaultOptions = BaseOptions(

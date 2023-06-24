@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/component/user/RouteList.dart';
 import 'package:stellar_town/component/user/UserInfoBrief.dart';
 import 'package:stellar_town/constant/Url.dart';
 import 'package:stellar_town/entity/user/User.dart';
 import 'package:stellar_town/util/HttpUtil.dart';
+
+/// 用户个人相关页面
+/// @author tt
+/// @date 2023-06-20
 
 class PersonalView extends StatefulWidget {
   const PersonalView({Key? key}) : super(key: key);
@@ -15,11 +20,11 @@ class PersonalViewState extends State<PersonalView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('个人信息'),
-      ),
-      body: const UserInfoBrief(),
-    );
+        appBar: AppBar(),
+        body: const Column(children: [
+          UserInfoBrief(),
+          RouteList(),
+        ]));
   }
 }
 
