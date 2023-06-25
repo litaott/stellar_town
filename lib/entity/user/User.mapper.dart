@@ -24,8 +24,6 @@ class UserMapper extends ClassMapperBase<User> {
   @override
   final String id = 'User';
 
-  static String _$account(User v) => v.account;
-  static const Field<User, String> _f$account = Field('account', _$account);
   static String _$password(User v) => v.password;
   static const Field<User, String> _f$password = Field('password', _$password);
   static String _$username(User v) => v.username;
@@ -33,28 +31,36 @@ class UserMapper extends ClassMapperBase<User> {
   static String _$phoneNumber(User v) => v.phoneNumber;
   static const Field<User, String> _f$phoneNumber =
       Field('phoneNumber', _$phoneNumber);
+  static String _$avatar(User v) => v.avatar;
+  static const Field<User, String> _f$avatar = Field('avatar', _$avatar,
+      opt: true,
+      def:
+          'https://up.enterdesk.com/photo/2011-6-4/enterdesk.com-70CD5C7D85E0DD1D1E548CA0CF22FDF1.jpg');
   static String _$address(User v) => v.address;
-  static const Field<User, String> _f$address = Field('address', _$address);
+  static const Field<User, String> _f$address =
+      Field('address', _$address, opt: true, def: '未填写');
   static String _$gender(User v) => v.gender;
-  static const Field<User, String> _f$gender = Field('gender', _$gender);
+  static const Field<User, String> _f$gender =
+      Field('gender', _$gender, opt: true, def: '未填写');
   static String _$age(User v) => v.age;
-  static const Field<User, String> _f$age = Field('age', _$age);
+  static const Field<User, String> _f$age =
+      Field('age', _$age, opt: true, def: '未填写');
   static String _$signature(User v) => v.signature;
   static const Field<User, String> _f$signature =
-      Field('signature', _$signature);
+      Field('signature', _$signature, opt: true, def: '未填写');
   static int _$followNumber(User v) => v.followNumber;
   static const Field<User, int> _f$followNumber =
-      Field('followNumber', _$followNumber);
+      Field('followNumber', _$followNumber, opt: true, def: 0);
   static int _$fansNumber(User v) => v.fansNumber;
   static const Field<User, int> _f$fansNumber =
-      Field('fansNumber', _$fansNumber);
+      Field('fansNumber', _$fansNumber, opt: true, def: 0);
 
   @override
   final Map<Symbol, Field<User, dynamic>> fields = const {
-    #account: _f$account,
     #password: _f$password,
     #username: _f$username,
     #phoneNumber: _f$phoneNumber,
+    #avatar: _f$avatar,
     #address: _f$address,
     #gender: _f$gender,
     #age: _f$age,
@@ -65,10 +71,10 @@ class UserMapper extends ClassMapperBase<User> {
 
   static User _instantiate(DecodingData data) {
     return User(
-        account: data.dec(_f$account),
         password: data.dec(_f$password),
         username: data.dec(_f$username),
         phoneNumber: data.dec(_f$phoneNumber),
+        avatar: data.dec(_f$avatar),
         address: data.dec(_f$address),
         gender: data.dec(_f$gender),
         age: data.dec(_f$age),
@@ -126,10 +132,10 @@ extension UserValueCopy<$R, $Out> on ObjectCopyWith<$R, User, $Out> {
 abstract class UserCopyWith<$R, $In extends User, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {String? account,
-      String? password,
+      {String? password,
       String? username,
       String? phoneNumber,
+      String? avatar,
       String? address,
       String? gender,
       String? age,
@@ -147,10 +153,10 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
   late final ClassMapperBase<User> $mapper = UserMapper.ensureInitialized();
   @override
   $R call(
-          {String? account,
-          String? password,
+          {String? password,
           String? username,
           String? phoneNumber,
+          String? avatar,
           String? address,
           String? gender,
           String? age,
@@ -158,10 +164,10 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
           int? followNumber,
           int? fansNumber}) =>
       $apply(FieldCopyWithData({
-        if (account != null) #account: account,
         if (password != null) #password: password,
         if (username != null) #username: username,
         if (phoneNumber != null) #phoneNumber: phoneNumber,
+        if (avatar != null) #avatar: avatar,
         if (address != null) #address: address,
         if (gender != null) #gender: gender,
         if (age != null) #age: age,
@@ -171,10 +177,10 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
       }));
   @override
   User $make(CopyWithData data) => User(
-      account: data.get(#account, or: $value.account),
       password: data.get(#password, or: $value.password),
       username: data.get(#username, or: $value.username),
       phoneNumber: data.get(#phoneNumber, or: $value.phoneNumber),
+      avatar: data.get(#avatar, or: $value.avatar),
       address: data.get(#address, or: $value.address),
       gender: data.get(#gender, or: $value.gender),
       age: data.get(#age, or: $value.age),
