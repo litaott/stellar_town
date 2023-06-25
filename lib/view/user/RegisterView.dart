@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stellar_town/component/user/CircleButton.dart';
 import 'package:stellar_town/component/user/TextInput.dart';
 
 /// 用户注册页面
@@ -15,8 +17,9 @@ class RegisterView extends StatefulWidget {
 class RegisterViewState extends State<RegisterView> {
   TextEditingController idController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
-  late String id, password;
+  late String id, password, phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -25,33 +28,40 @@ class RegisterViewState extends State<RegisterView> {
       textDirection: TextDirection.ltr,
       child: Scaffold(
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image(image: Image.asset('assets/image/register.png').image),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(80, 0, 80, 0),
-              child: TextInput(
-                controller: idController,
-                hintText: '用户名',
-                icon: Icons.account_circle,
+            Container(
+              alignment: Alignment.center,
+              child: Image(
+                image: Image.asset('assets/image/login.png').image,
+                width: 150,
+                height: 150,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(80, 0, 80, 40),
-              child: TextInput(
-                controller: passwordController,
-                hintText: '密码',
-                icon: Icons.key,
-                obscureText: true,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextInput(
+                  controller: idController,
+                  hintText: '用户名',
+                  icon: Icons.account_circle,
+                ),
+                TextInput(
+                  controller: passwordController,
+                  hintText: '密码',
+                  icon: Icons.key,
+                  obscureText: true,
+                ),
+                TextInput(
+                  controller: phoneNumberController,
+                  hintText: '手机号码',
+                  icon: Icons.phone,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 48.0,
-              child: ElevatedButton(
-                onPressed: register,
-                child: const Text('注册'),
-              ),
+            GestureDetector(
+              onTap: register,
+              child: const CircleButton(icon: Icons.check),
             ),
           ],
         ),
@@ -60,8 +70,33 @@ class RegisterViewState extends State<RegisterView> {
   }
 
   ///注册响应函数
-  void register() {
+  void register() async {
     id = idController.text.toString();
     password = passwordController.text.toString();
+    phoneNumber = phoneNumberController.text.toString();
+    successDialog();
+  }
+
+  /// 注册成功弹窗
+  void successDialog() {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text('注册成功'),
+            content: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('返回登录页面'),
+            ),
+            actions: [
+              CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                    Navigator.of(context).pop(true);
+                  },
+                  child: const Text('确定'))
+            ],
+          );
+        });
   }
 }

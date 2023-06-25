@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../view/user/PersonalView.dart';
 import '../view/post/PostHomeView.dart';
+import '../view/user/PersonalView.dart';
 
 /// 底部导航栏组件
 /// @author tt
@@ -28,6 +28,7 @@ class NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
