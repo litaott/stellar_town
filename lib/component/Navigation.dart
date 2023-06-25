@@ -28,7 +28,6 @@ class NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
@@ -54,8 +53,10 @@ class NavigationState extends State<Navigation> {
   }
 
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    setState(
+      () {
+        _currentIndex = index;
+      },
+    );
   }
 }

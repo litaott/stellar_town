@@ -5,6 +5,8 @@ import 'package:stellar_town/view/SplashView.dart';
 import 'package:stellar_town/view/user/LoginView.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+late double screenWidth;
+late double screenHeight;
 
 void main() {
   runApp(const Myapp());
@@ -15,12 +17,17 @@ class Myapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+
     checkLoginStatus();
 
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
 
     return MaterialApp(
       navigatorKey: navigatorKey,
@@ -34,8 +41,7 @@ class Myapp extends StatelessWidget {
   }
 
   void checkLoginStatus() async {
-    // 检查登录状态
-    await Future.delayed(const Duration(seconds: 2)); // 模拟耗时操作
+    await Future.delayed(const Duration(seconds: 2));
     if (navigatorKey.currentState?.canPop() != true) {
       navigatorKey.currentState?.pushReplacementNamed('/login');
     }

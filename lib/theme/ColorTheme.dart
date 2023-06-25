@@ -4,11 +4,18 @@ import 'package:flutter/material.dart';
 /// @author tt
 /// @date 2023-06-24
 
-///蓝色
-const Color blue = Color(0xFF2196F3);
+class ColorTheme {
+  ColorTheme._();
 
-///浅蓝色
-const Color lightBlue = Color(0xFF21FFF3);
+  ///蓝色
+  static const Color blue = Color(0xFF2196F3);
 
-///深蓝色
-const Color deepBlue = Color(0xFF2144F3);
+  ///浅蓝色
+  static const Color lightBlue = Color(0xFF21CCF3);
+
+  ///深蓝色
+  static const Color deepBlue = Color(0xFF2144F3);
+
+  ///青色
+  static const Color cyan = Color(0xFF21FFF3);
+}

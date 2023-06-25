@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:stellar_town/constant/Url.dart';
+import 'package:stellar_town/constant/ConstUrl.dart';
 
 /// Http请求工具类
 /// @author tt
@@ -8,7 +8,7 @@ import 'package:stellar_town/constant/Url.dart';
 class HttpUtil {
   // Initialize the default options
   static final BaseOptions defaultOptions = BaseOptions(
-    baseUrl: baseUrl,
+    baseUrl: ConstUrl.baseUrl,
     connectTimeout: 5000,
     receiveTimeout: 5000,
   );

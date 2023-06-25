@@ -10,28 +10,29 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Stellar Town',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic,
-              shadows: [
-                Shadow(
-                  blurRadius: 4,
-                  color: Colors.grey,
-                  offset: Offset(2, 2),
-                ),
-              ],
+      home: Scaffold(
+        body: Container(
+          color: Colors.white,
+          child: const Center(
+            child: Text(
+              'Stellar Town',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 48,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                shadows: [
+                  Shadow(
+                    blurRadius: 4,
+                    color: Colors.grey,
+                    offset: Offset(2, 2),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
-    ));
+    );
   }
 }

@@ -24,49 +24,50 @@ class RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Directionality(
-      textDirection: TextDirection.ltr,
-      child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: Image(
-                image: Image.asset('assets/image/login.png').image,
-                width: 150,
-                height: 150,
+      home: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                child: Image(
+                  image: Image.asset('assets/image/login.png').image,
+                  width: 150,
+                  height: 150,
+                ),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextInput(
-                  controller: idController,
-                  hintText: '用户名',
-                  icon: Icons.account_circle,
-                ),
-                TextInput(
-                  controller: passwordController,
-                  hintText: '密码',
-                  icon: Icons.key,
-                  obscureText: true,
-                ),
-                TextInput(
-                  controller: phoneNumberController,
-                  hintText: '手机号码',
-                  icon: Icons.phone,
-                ),
-              ],
-            ),
-            GestureDetector(
-              onTap: register,
-              child: const CircleButton(icon: Icons.check),
-            ),
-          ],
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextInput(
+                    controller: idController,
+                    hintText: '用户名',
+                    icon: Icons.account_circle,
+                  ),
+                  TextInput(
+                    controller: passwordController,
+                    hintText: '密码',
+                    icon: Icons.key,
+                    obscureText: true,
+                  ),
+                  TextInput(
+                    controller: phoneNumberController,
+                    hintText: '手机号码',
+                    icon: Icons.phone,
+                  ),
+                ],
+              ),
+              GestureDetector(
+                onTap: register,
+                child: const CircleButton(icon: Icons.check),
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 
   ///注册响应函数
@@ -80,23 +81,25 @@ class RegisterViewState extends State<RegisterView> {
   /// 注册成功弹窗
   void successDialog() {
     showCupertinoDialog(
-        context: context,
-        builder: (context) {
-          return CupertinoAlertDialog(
-            title: const Text('注册成功'),
-            content: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text('返回登录页面'),
-            ),
-            actions: [
-              CupertinoDialogAction(
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                    Navigator.of(context).pop(true);
-                  },
-                  child: const Text('确定'))
-            ],
-          );
-        });
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('注册成功'),
+          content: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('返回登录页面'),
+          ),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+                Navigator.of(context).pop(true);
+              },
+              child: const Text('确定'),
+            )
+          ],
+        );
+      },
+    );
   }
 }

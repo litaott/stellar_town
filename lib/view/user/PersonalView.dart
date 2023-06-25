@@ -17,16 +17,23 @@ class PersonalView extends StatefulWidget {
 class PersonalViewState extends State<PersonalView> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
 
     return const Scaffold(
-        body: SafeArea(
-            child: Column(children: [
-      UserInfoBrief(),
-      RouteList(),
-    ])));
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            UserInfoBrief(),
+            RouteList(),
+          ],
+        ),
+      ),
+    );
   }
 }

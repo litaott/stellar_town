@@ -13,27 +13,23 @@ class CircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        alignment: Alignment.center,
-        width: 70,
-        height: 70,
-        decoration: BoxDecoration(
-          color: blue,
-          borderRadius: BorderRadius.circular(100),
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [deepBlue, lightBlue],
-          ),
+      alignment: Alignment.center,
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        color: ColorTheme.blue,
+        borderRadius: BorderRadius.circular(100),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [ColorTheme.deepBlue, ColorTheme.lightBlue],
         ),
-        child: Icon(
-          icon,
-          size: 30,
-          color: Colors.white,
-        )
-        // child: Text(
-        //   text,
-        //   style: loginButtonStyle,
-        // ),
-        );
+      ),
+      child: Icon(
+        icon,
+        size: 30,
+        color: Colors.white,
+      ),
+    );
   }
 }
