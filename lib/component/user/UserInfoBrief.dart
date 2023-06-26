@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/component/user/FeatureBar.dart';
+import 'package:stellar_town/main.dart';
+import 'package:stellar_town/theme/ColorTheme.dart';
+import 'package:stellar_town/theme/TextStyleTheme.dart';
 
 /// 用户简短信息组件
 /// @author tt
@@ -14,14 +18,74 @@ class UserInfoBrief extends StatefulWidget {
 class UserInfoBriefState extends State<UserInfoBrief> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundImage:
-            Image.network('https://img.duoziwang.com/2018/04/2411164027183.jpg')
-                .image,
+    return Container(
+      width: screenWidth * 0.95,
+      height: 240,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(3, 3),
+            blurRadius: 6,
+            spreadRadius: 10,
+            color: Color.fromARGB(20, 0, 0, 0),
+          ),
+        ],
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [ColorTheme.blue, ColorTheme.lightBlue],
+        ),
       ),
-      title: const Text('sing_me_to_a_flow'),
-      subtitle: const Text('令人愤慨的不是受苦/而是受这苦没理由'),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  boxShadow: const [
+                    BoxShadow(
+                      offset: Offset(0, 0),
+                      blurRadius: 1,
+                      spreadRadius: 2,
+                      color: Color.fromARGB(20, 0, 0, 0),
+                    ),
+                  ],
+                ),
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundImage: Image.network(
+                          'https://img.duoziwang.com/2018/04/2411164027183.jpg')
+                      .image,
+                ),
+              ),
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '明室',
+                    style: TextStyleTheme.currentUsernameStyle,
+                  ),
+                  Text(
+                    '唯一辨识我是我的，只有心上的疤痕',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const FeatureBar(),
+        ],
+      ),
     );
   }
 }

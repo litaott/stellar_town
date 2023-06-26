@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 /// 帖子
 /// @author ww
 /// @date 2023-06-24
@@ -36,16 +37,23 @@ Widget personalSection = Container(
   padding: const EdgeInsets.all(32),
   height: 120,
   child: Row(
-
     children: [
       Image.asset('assets/image/login.png', fit: BoxFit.cover),
       Column(
         children: [
-          const Text('名字', style: TextStyle(fontSize: 20,),),
+          const Text(
+            '名字',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
           Expanded(
             child: Row(
               children: [
-                Icon(Icons.star, color: Colors.red[500],),
+                Icon(
+                  Icons.star,
+                  color: Colors.red[500],
+                ),
                 const Text('关注'),
               ],
             ),
@@ -83,7 +91,6 @@ Widget domain = const Row(
     Expanded(child: Text('点赞')),
   ],
 );
-
 
 Widget titleRow = const Row(
   children: [

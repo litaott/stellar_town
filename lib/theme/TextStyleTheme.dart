@@ -28,4 +28,3 @@ class TextStyleTheme {
     fontWeight: FontWeight.bold,
   );
 }
-

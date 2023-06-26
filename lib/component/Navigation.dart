@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../view/user/PersonalView.dart';
 import '../view/post/PostHomeView.dart';
+import '../view/user/PersonalView.dart';
 
 /// 底部导航栏组件
 /// @author tt
@@ -53,8 +53,10 @@ class NavigationState extends State<Navigation> {
   }
 
   void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    setState(
+      () {
+        _currentIndex = index;
+      },
+    );
   }
 }

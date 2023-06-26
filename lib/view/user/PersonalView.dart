@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stellar_town/component/user/RouteList.dart';
 import 'package:stellar_town/component/user/UserInfoBrief.dart';
-import 'package:stellar_town/constant/Url.dart';
-import 'package:stellar_town/entity/user/User.dart';
-import 'package:stellar_town/util/HttpUtil.dart';
 
 /// 用户个人相关页面
 /// @author tt
@@ -19,25 +17,23 @@ class PersonalView extends StatefulWidget {
 class PersonalViewState extends State<PersonalView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(),
-        body: const Column(children: [
-          UserInfoBrief(),
-          RouteList(),
-        ]));
-  }
-}
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
 
-Future<User> getUser(int id) async {
-  try {
-    final response = await HttpUtil.post(getUserInfoUrl, {'id': id.toString()});
-    if (response.statusCode == 200) {
-      User user = User.fromJson(response.data);
-      return user;
-    } else {
-      throw Exception('Failed to load user');
-    }
-  } catch (e) {
-    throw Exception('Network error: $e');
+    return const Scaffold(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            UserInfoBrief(),
+            RouteList(),
+          ],
+        ),
+      ),
+    );
   }
 }
