@@ -27,4 +27,10 @@ class TextStyleTheme {
     fontSize: 28,
     fontWeight: FontWeight.bold,
   );
+
+  /// FeatureBar
+  static const TextStyle featureBarStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 16,
+  );
 }

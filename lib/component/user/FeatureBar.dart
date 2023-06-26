@@ -1,41 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/main.dart';
+import 'package:stellar_town/theme/TextStyleTheme.dart';
 
-class FeatureBar extends StatelessWidget {
+/// 功能按钮块
+/// @author tt
+/// @date 2023-06-25
+
+class FeatureBar extends StatefulWidget {
   const FeatureBar({super.key});
 
   @override
+  State createState() => FeatureBarState();
+}
+
+class FeatureBarState extends State<FeatureBar> {
+  String publishNum = '0', thumbNum = '0', followNum = '0', followerNum = '0';
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: screenWidth * 0.9,
-      height: 60,
-      decoration: BoxDecoration(
-        // border: Border.all(
-        //   width: 2,
-        // ),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.thumb_up_rounded),
+    return ButtonBar(
+      alignment: MainAxisAlignment.spaceEvenly,
+      buttonPadding: EdgeInsets.zero,
+      children: [
+        TextButton(
+          onPressed: null,
+          child: Column(
+            children: [
+              Text(
+                publishNum,
+                style: TextStyleTheme.featureBarStyle,
+              ),
+              const Text(
+                '发布',
+                style: TextStyleTheme.featureBarStyle,
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.star_border_rounded),
+        ),
+        TextButton(
+          onPressed: null,
+          child: Column(
+            children: [
+              Text(
+                thumbNum,
+                style: TextStyleTheme.featureBarStyle,
+              ),
+              const Text(
+                '点赞',
+                style: TextStyleTheme.featureBarStyle,
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.star_border_rounded),
+        ),
+        TextButton(
+          onPressed: null,
+          child: Column(
+            children: [
+              Text(
+                followNum,
+                style: TextStyleTheme.featureBarStyle,
+              ),
+              const Text(
+                '关注',
+                style: TextStyleTheme.featureBarStyle,
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.thumb_up_rounded),
+        ),
+        TextButton(
+          onPressed: null,
+          child: Column(
+            children: [
+              Text(
+                followerNum,
+                style: TextStyleTheme.featureBarStyle,
+              ),
+              const Text(
+                '粉丝',
+                style: TextStyleTheme.featureBarStyle,
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

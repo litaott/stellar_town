@@ -31,6 +31,9 @@ class PersonalViewState extends State<PersonalView> {
           children: [
             UserInfoBrief(),
             RouteList(),
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       ),
