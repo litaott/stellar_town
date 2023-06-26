@@ -5,12 +5,18 @@
 class ConstUrl {
   ConstUrl._();
 
-  /// 服务器
-  static const String baseUrl = 'http://127.0.0.1:4523/m1/2903291-0-default';
-
-  /// 用户相关
   static const String defaultAvatar =
       'https://up.enterdesk.com/photo/2011-6-4/enterdesk.com-70CD5C7D85E0DD1D1E548CA0CF22FDF1.jpg';
-  static const String userBaseUrl = '/user';
+
+  /// 服务器
+  static const String baseUrl = 'http://http://49ilim5biema.xiaomiqiu.com';
+
+  /// 用户相关
+  static const String userBaseUrl = '/api/v1/user';
+  static const String registerUrl = '$userBaseUrl/getUserInfo';
+  static const String loginUrl = '$userBaseUrl/getUserInfo';
   static const String getUserInfoUrl = '$userBaseUrl/getUserInfo';
+  static const String logoutUrl = '$userBaseUrl/getUserInfo';
+  static const String updateUserInfoUrl = '$userBaseUrl/getUserInfo';
+  static const String getUserInfoByIdUrl = '$userBaseUrl/getUserInfo';
 }
