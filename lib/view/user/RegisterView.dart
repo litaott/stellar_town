@@ -1,7 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/user/CircleButton.dart';
+import 'package:stellar_town/component/user/RollingBox.dart';
 import 'package:stellar_town/component/user/TextInput.dart';
+import 'package:stellar_town/constant/ConstUrl.dart';
+import 'package:stellar_town/main.dart';
+import 'package:stellar_town/util/HttpUtil.dart';
 
 /// 用户注册页面
 /// @author tt
@@ -15,11 +20,11 @@ class RegisterView extends StatefulWidget {
 }
 
 class RegisterViewState extends State<RegisterView> {
-  TextEditingController idController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
 
-  late String id, password, phoneNumber;
+  late String username, password, phoneNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -27,22 +32,16 @@ class RegisterViewState extends State<RegisterView> {
       home: Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: Image(
-                  image: Image.asset('assets/image/login.png').image,
-                  width: 150,
-                  height: 150,
-                ),
-              ),
+              const RollingBox(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextInput(
-                    controller: idController,
+                    controller: usernameController,
                     hintText: '用户名',
                     icon: Icons.account_circle,
                   ),
@@ -54,14 +53,28 @@ class RegisterViewState extends State<RegisterView> {
                   ),
                   TextInput(
                     controller: phoneNumberController,
-                    hintText: '手机号码',
+                    hintText: '电话号码',
                     icon: Icons.phone,
                   ),
                 ],
               ),
-              GestureDetector(
-                onTap: register,
-                child: const CircleButton(icon: Icons.check),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const CircleButton(icon: Icons.arrow_back_outlined),
+                  ),
+                  GestureDetector(
+                    onTap: register,
+                    child: const CircleButton(icon: Icons.check),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: screenHeight * 0.1,
               ),
             ],
           ),
@@ -72,10 +85,21 @@ class RegisterViewState extends State<RegisterView> {
 
   ///注册响应函数
   void register() async {
-    id = idController.text.toString();
+    username = usernameController.text.toString();
     password = passwordController.text.toString();
     phoneNumber = phoneNumberController.text.toString();
-    successDialog();
+    Map data = {
+      'username': username,
+      'password': password,
+    };
+    Response response = await HttpUtil.post(ConstUrl.registerUrl, data);
+    data = response.data;
+
+    if (data['code'] ~/ 100 == 2) {
+      successDialog();
+    } else {
+      failDialog(data['message']);
+    }
   }
 
   /// 注册成功弹窗
@@ -92,8 +116,32 @@ class RegisterViewState extends State<RegisterView> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.of(context).pop(true);
-                Navigator.of(context).pop(true);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              child: const Text('确定'),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  /// 注册失败弹窗
+  void failDialog(String message) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('注册失败'),
+          content: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(message),
+          ),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.pop(context);
               },
               child: const Text('确定'),
             )
