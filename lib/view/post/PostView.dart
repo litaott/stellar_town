@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/component/post/post/PostInfoBrief.dart';
-import 'package:stellar_town/component/post/PostTopInfoBrief.dart';
+import 'package:stellar_town/component/post/postDetail/PostInfo.dart';
+import 'package:stellar_town/component/post/postDetail/PostOwner.dart';
+import 'package:stellar_town/component/post/postDetail/PostBottum.dart';
 
-/// 帖子总览界面
+
+/// 帖子详细信息界面
 /// @author ww
-/// @date 2023-06-24
+/// @date 2023-06-27
 
 class PostView extends StatefulWidget {
   const PostView({Key? key}) : super(key: key);
@@ -16,11 +18,25 @@ class PostView extends StatefulWidget {
 class PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:const Text('返回'),
-      ),
-      body: const PostInfoBrief(),
+    return MaterialApp(
+      home:Scaffold(
+          appBar: AppBar(title:const Text('返回'),),
+          body:ListView(
+            children: const [
+              PostOwner(
+                name: '2',
+              ),//贴主信息
+              PostInfo(
+                  title:'标题',
+                  content:'内容',
+              ),//标题,内容
+              PostBottom(
+                tag:"1",
+                place: '地点',
+              ),//标签，点赞，点赞数
+            ],
+          )
+        )
     );
   }
 }
