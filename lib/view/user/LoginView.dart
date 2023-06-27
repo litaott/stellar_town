@@ -1,9 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:stellar_town/component/Navigation.dart';
 import 'package:stellar_town/component/user/CircleButton.dart';
+import 'package:stellar_town/component/user/RollingBox.dart';
 import 'package:stellar_town/component/user/TextInput.dart';
+import 'package:stellar_town/constant/ConstUrl.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/TextStyleTheme.dart';
+import 'package:stellar_town/util/HttpUtil.dart';
 import 'package:stellar_town/view/user/RegisterView.dart';
 
 /// 用户登录页面
@@ -21,25 +26,21 @@ class LoginViewState extends State<LoginView> {
   TextEditingController idController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  late String id, password;
+  late String username, password;
 
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
     return MaterialApp(
       home: Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: Image(
-                  image: Image.asset('assets/image/login.png').image,
-                  width: 150,
-                  height: 150,
-                ),
-              ),
+              const RollingBox(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -76,6 +77,9 @@ class LoginViewState extends State<LoginView> {
                   style: TextStyleTheme.registerStyle,
                 ),
               ),
+              SizedBox(
+                height: screenHeight * 0.1,
+              ),
             ],
           ),
         ),
@@ -84,10 +88,22 @@ class LoginViewState extends State<LoginView> {
   }
 
   ///登录响应函数
-  void login() {
-    id = idController.text.toString();
+  void login() async {
+    username = idController.text.toString();
     password = passwordController.text.toString();
-    successDialog();
+    Map data = {
+      'username': username,
+      'password': password,
+    };
+    Response response = await HttpUtil.post(ConstUrl.loginUrl, data);
+    data = response.data;
+
+    if (data['code'] ~/ 100 == 2) {
+      HttpUtil.token = data['data']['token'];
+      successDialog();
+    } else {
+      failDialog(data['message']);
+    }
   }
 
   /// 登录成功弹窗
@@ -99,14 +115,43 @@ class LoginViewState extends State<LoginView> {
           title: const Text('登录成功'),
           actions: [
             CupertinoDialogAction(
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                  if (navigatorKey.currentState?.canPop() != true) {
-                    navigatorKey.currentState
-                        ?.pushReplacementNamed('/homepage');
-                  }
-                },
-                child: const Text('确定'))
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const Navigation();
+                    },
+                  ),
+                );
+              },
+              child: const Text('确定'),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  /// 登录失败弹窗
+  void failDialog(String message) {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: const Text('登录失败'),
+          content: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(message),
+          ),
+          actions: [
+            CupertinoDialogAction(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('确定'),
+            )
           ],
         );
       },

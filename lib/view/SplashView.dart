@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/view/user/LoginView.dart';
 
 /// 开屏页面
 /// @author tt
@@ -9,6 +10,20 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const LoginView();
+            },
+          ),
+        );
+      },
+    );
+
     return MaterialApp(
       home: Scaffold(
         body: Container(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stellar_town/component/Navigation.dart';
 import 'package:stellar_town/view/SplashView.dart';
-import 'package:stellar_town/view/user/LoginView.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 late double screenWidth;
@@ -20,8 +18,6 @@ class Myapp extends StatelessWidget {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
 
-    checkLoginStatus();
-
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -29,14 +25,8 @@ class Myapp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      navigatorKey: navigatorKey,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashView(),
-        '/login': (context) => const LoginView(),
-        '/homepage': (context) => const Navigation(),
-      },
+    return const MaterialApp(
+      home: SplashView(),
     );
   }
 

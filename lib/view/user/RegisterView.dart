@@ -58,9 +58,20 @@ class RegisterViewState extends State<RegisterView> {
                   ),
                 ],
               ),
-              GestureDetector(
-                onTap: register,
-                child: const CircleButton(icon: Icons.check),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const CircleButton(icon: Icons.arrow_back_outlined),
+                  ),
+                  GestureDetector(
+                    onTap: register,
+                    child: const CircleButton(icon: Icons.check),
+                  ),
+                ],
               ),
               SizedBox(
                 height: screenHeight * 0.1,
@@ -105,8 +116,8 @@ class RegisterViewState extends State<RegisterView> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.of(context).pop(true);
-                Navigator.of(context).pop(true);
+                Navigator.pop(context);
+                Navigator.pop(context);
               },
               child: const Text('确定'),
             )
@@ -130,7 +141,7 @@ class RegisterViewState extends State<RegisterView> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.of(context).pop(true);
+                Navigator.pop(context);
               },
               child: const Text('确定'),
             )
