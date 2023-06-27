@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-/// 帖子顶部导航界面
+/// 帖子主页顶部导航组件
 /// @author ww
 /// @date 2023-06-24
 
-class PostTopInfoBrief extends StatefulWidget {
-  const PostTopInfoBrief({Key? key}) : super(key: key);
+class PostHomeTop extends StatefulWidget {
+  const PostHomeTop({Key? key}) : super(key: key);
 
   @override
-  PostTopInfoBriefState createState() => PostTopInfoBriefState();
+  PostHomeTopState createState() => PostHomeTopState();
 }
 
-class PostTopInfoBriefState extends State<PostTopInfoBrief> {
+class PostHomeTopState extends State<PostHomeTop> {
   @override
   Widget build(BuildContext context) {
     return const Row(
