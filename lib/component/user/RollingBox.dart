@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/ColorTheme.dart';
 
+/// 登录页面流动装饰
+/// @author tt
+/// @date 2023-06-26
+
 class RollingBox extends StatefulWidget {
   const RollingBox({super.key});
 

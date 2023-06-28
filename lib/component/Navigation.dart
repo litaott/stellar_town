@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/view/user/PersonalPageView.dart';
+import 'package:stellar_town/view/user/PersonalView.dart';
 
 import '../view/post/PostHomeView.dart';
 
@@ -22,7 +22,7 @@ class NavigationState extends State<Navigation> {
     const Center(
       child: Text('导览'),
     ),
-    const PersonalPageView(),
+    const PersonalView(),
   ];
 
   @override

@@ -9,6 +9,7 @@ part 'User.mapper.dart';
 
 @MappableClass()
 class User with UserMappable {
+  String id; //账号（主键）
   String username; //用户名
   String password; //密码
   String phoneNumber; //手机号
@@ -17,25 +18,28 @@ class User with UserMappable {
   String gender; //性别
   String age; //年龄
   String signature; //个性签名
-  int followNumber; //关注数
-  int fansNumber; //粉丝数
+  String followNumber; //关注数
+  String fansNumber; //粉丝数
 
   User({
-    required this.password,
+    required this.id,
     required this.username,
-    required this.phoneNumber,
+    required this.password,
+    this.phoneNumber = '未填写',
     this.avatar = ConstUrl.defaultAvatar,
     this.address = '未填写',
     this.gender = '未填写',
     this.age = '未填写',
-    this.signature = '未填写',
-    this.followNumber = 0,
-    this.fansNumber = 0,
+    this.signature = '快来书写你的个性签名吧！',
+    this.followNumber = '0',
+    this.fansNumber = '0',
   });
 
   /// 将map/json转换为User对象
   static const fromMap = UserMapper.fromMap;
   static const fromJson = UserMapper.fromJson;
+
+  static User defaultUser = User(id: '0', username: '未知用户', password: '0');
 
   // /// 获取当前用户信息*async
   // /// @param null

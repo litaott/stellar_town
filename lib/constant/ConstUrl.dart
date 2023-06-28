@@ -13,10 +13,20 @@ class ConstUrl {
 
   /// 用户相关
   static const String userBaseUrl = '/api/v1/user';
-  static const String registerUrl = '$userBaseUrl/register';
-  static const String loginUrl = '$userBaseUrl/login';
-  static const String getUserInfoUrl = '$userBaseUrl/getUserInfo';
-  static const String logoutUrl = '$userBaseUrl/logout';
-  static const String updateUserInfoUrl = '$userBaseUrl/updateUserInfo';
-  static const String getUserInfoByIdUrl = '$userBaseUrl/getUserInfoById';
+  static const String register = '$userBaseUrl/register';
+  static const String login = '$userBaseUrl/login';
+  static const String getUserInfo = '$userBaseUrl/getUserInfo';
+  static const String logout = '$userBaseUrl/logout';
+  static const String updateUserInfo = '$userBaseUrl/updateUserInfo';
+  static const String getUserInfoById = '$userBaseUrl/getUserInfoById';
+  static const String followUser = '$userBaseUrl/followUser';
+  static const String unFollowUser = '$userBaseUrl/unFollowUser';
+  static const String getUserFollow = '$userBaseUrl/getUserFollow';
+
+  /// 帖子相关
+
+  /// 图片相关
+  static const String imageBaseUrl = '/api/v1/minio/upload';
+  static const String uploadAvatar = '$imageBaseUrl/avatar';
+  static const String uploadPost = '$imageBaseUrl/post';
 }
