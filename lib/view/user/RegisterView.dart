@@ -29,55 +29,52 @@ class RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const RollingBox(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextInput(
-                    controller: usernameController,
-                    hintText: '用户名',
-                    icon: Icons.account_circle,
-                  ),
-                  TextInput(
-                    controller: passwordController,
-                    hintText: '密码',
-                    icon: Icons.key,
-                    obscureText: true,
-                  ),
-                  TextInput(
-                    controller: phoneNumberController,
-                    hintText: '电话号码',
-                    icon: Icons.phone,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: const CircleButton(icon: Icons.arrow_back_outlined),
-                  ),
-                  GestureDetector(
-                    onTap: register,
-                    child: const CircleButton(icon: Icons.check),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: screenHeight * 0.1,
-              ),
-            ],
-          ),
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const RollingBox(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextInput(
+                  controller: usernameController,
+                  hintText: '用户名',
+                  icon: Icons.account_circle,
+                ),
+                TextInput(
+                  controller: passwordController,
+                  hintText: '密码',
+                  icon: Icons.key,
+                  obscureText: true,
+                ),
+                TextInput(
+                  controller: phoneNumberController,
+                  hintText: '电话号码',
+                  icon: Icons.phone,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const CircleButton(icon: Icons.arrow_back_outlined),
+                ),
+                GestureDetector(
+                  onTap: register,
+                  child: const CircleButton(icon: Icons.check),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: screenHeight * 0.1,
+            ),
+          ],
         ),
       ),
     );
@@ -88,17 +85,17 @@ class RegisterViewState extends State<RegisterView> {
     username = usernameController.text.toString();
     password = passwordController.text.toString();
     phoneNumber = phoneNumberController.text.toString();
-    Map data = {
+    Map body = {
       'username': username,
       'password': password,
     };
-    Response response = await HttpUtil.post(ConstUrl.registerUrl, data);
-    data = response.data;
+    Response response = await HttpUtil.post(ConstUrl.register, body);
+    body = response.data;
 
-    if (data['code'] ~/ 100 == 2) {
+    if (body['code'] ~/ 100 == 2) {
       successDialog();
     } else {
-      failDialog(data['message']);
+      failDialog(body['message']);
     }
   }
 

@@ -32,56 +32,54 @@ class LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
+
     return MaterialApp(
-      home: Directionality(
-        textDirection: TextDirection.ltr,
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const RollingBox(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextInput(
-                    controller: idController,
-                    hintText: '用户名',
-                    icon: Icons.account_circle,
-                  ),
-                  TextInput(
-                    controller: passwordController,
-                    hintText: '密码',
-                    icon: Icons.key,
-                    obscureText: true,
-                  ),
-                ],
-              ),
-              GestureDetector(
-                onTap: login,
-                child: const CircleButton(
-                  icon: Icons.arrow_forward_outlined,
+      home: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const RollingBox(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextInput(
+                  controller: idController,
+                  hintText: '用户名',
+                  icon: Icons.account_circle,
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const RegisterView(),
-                    ),
-                  );
-                },
-                child: const Text(
-                  '未拥有账号？点击注册',
-                  style: TextStyleTheme.registerStyle,
+                TextInput(
+                  controller: passwordController,
+                  hintText: '密码',
+                  icon: Icons.key,
+                  obscureText: true,
                 ),
+              ],
+            ),
+            GestureDetector(
+              onTap: login,
+              child: const CircleButton(
+                icon: Icons.arrow_forward_outlined,
               ),
-              SizedBox(
-                height: screenHeight * 0.1,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RegisterView(),
+                  ),
+                );
+              },
+              child: const Text(
+                '未拥有账号？点击注册',
+                style: TextStyleTheme.registerStyle,
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: screenHeight * 0.1,
+            ),
+          ],
         ),
       ),
     );
@@ -91,18 +89,17 @@ class LoginViewState extends State<LoginView> {
   void login() async {
     username = idController.text.toString();
     password = passwordController.text.toString();
-    Map data = {
+    Map body = {
       'username': username,
       'password': password,
     };
-    Response response = await HttpUtil.post(ConstUrl.loginUrl, data);
-    data = response.data;
-
-    if (data['code'] ~/ 100 == 2) {
-      HttpUtil.token = data['data']['token'];
+    Response response = await HttpUtil.post(ConstUrl.login, body);
+    body = response.data;
+    if (body['code'] ~/ 100 == 2) {
+      HttpUtil.token = body['data']['token'];
       successDialog();
     } else {
-      failDialog(data['message']);
+      failDialog(body['message']);
     }
   }
 

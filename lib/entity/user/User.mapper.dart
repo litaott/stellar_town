@@ -24,18 +24,18 @@ class UserMapper extends ClassMapperBase<User> {
   @override
   final String id = 'User';
 
-  static String _$password(User v) => v.password;
-  static const Field<User, String> _f$password = Field('password', _$password);
+  static String _$id(User v) => v.id;
+  static const Field<User, String> _f$id = Field('id', _$id);
   static String _$username(User v) => v.username;
   static const Field<User, String> _f$username = Field('username', _$username);
+  static String _$password(User v) => v.password;
+  static const Field<User, String> _f$password = Field('password', _$password);
   static String _$phoneNumber(User v) => v.phoneNumber;
   static const Field<User, String> _f$phoneNumber =
-      Field('phoneNumber', _$phoneNumber);
+      Field('phoneNumber', _$phoneNumber, opt: true, def: '未填写');
   static String _$avatar(User v) => v.avatar;
-  static const Field<User, String> _f$avatar = Field('avatar', _$avatar,
-      opt: true,
-      def:
-          'https://up.enterdesk.com/photo/2011-6-4/enterdesk.com-70CD5C7D85E0DD1D1E548CA0CF22FDF1.jpg');
+  static const Field<User, String> _f$avatar =
+      Field('avatar', _$avatar, opt: true, def: ConstUrl.defaultAvatar);
   static String _$address(User v) => v.address;
   static const Field<User, String> _f$address =
       Field('address', _$address, opt: true, def: '未填写');
@@ -47,18 +47,19 @@ class UserMapper extends ClassMapperBase<User> {
       Field('age', _$age, opt: true, def: '未填写');
   static String _$signature(User v) => v.signature;
   static const Field<User, String> _f$signature =
-      Field('signature', _$signature, opt: true, def: '未填写');
-  static int _$followNumber(User v) => v.followNumber;
-  static const Field<User, int> _f$followNumber =
-      Field('followNumber', _$followNumber, opt: true, def: 0);
-  static int _$fansNumber(User v) => v.fansNumber;
-  static const Field<User, int> _f$fansNumber =
-      Field('fansNumber', _$fansNumber, opt: true, def: 0);
+      Field('signature', _$signature, opt: true, def: '快来书写你的个性签名吧！');
+  static String _$followNumber(User v) => v.followNumber;
+  static const Field<User, String> _f$followNumber =
+      Field('followNumber', _$followNumber, opt: true, def: '0');
+  static String _$fansNumber(User v) => v.fansNumber;
+  static const Field<User, String> _f$fansNumber =
+      Field('fansNumber', _$fansNumber, opt: true, def: '0');
 
   @override
   final Map<Symbol, Field<User, dynamic>> fields = const {
-    #password: _f$password,
+    #id: _f$id,
     #username: _f$username,
+    #password: _f$password,
     #phoneNumber: _f$phoneNumber,
     #avatar: _f$avatar,
     #address: _f$address,
@@ -71,8 +72,9 @@ class UserMapper extends ClassMapperBase<User> {
 
   static User _instantiate(DecodingData data) {
     return User(
-        password: data.dec(_f$password),
+        id: data.dec(_f$id),
         username: data.dec(_f$username),
+        password: data.dec(_f$password),
         phoneNumber: data.dec(_f$phoneNumber),
         avatar: data.dec(_f$avatar),
         address: data.dec(_f$address),
@@ -132,16 +134,17 @@ extension UserValueCopy<$R, $Out> on ObjectCopyWith<$R, User, $Out> {
 abstract class UserCopyWith<$R, $In extends User, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {String? password,
+      {String? id,
       String? username,
+      String? password,
       String? phoneNumber,
       String? avatar,
       String? address,
       String? gender,
       String? age,
       String? signature,
-      int? followNumber,
-      int? fansNumber});
+      String? followNumber,
+      String? fansNumber});
   UserCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -153,19 +156,21 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
   late final ClassMapperBase<User> $mapper = UserMapper.ensureInitialized();
   @override
   $R call(
-          {String? password,
+          {String? id,
           String? username,
+          String? password,
           String? phoneNumber,
           String? avatar,
           String? address,
           String? gender,
           String? age,
           String? signature,
-          int? followNumber,
-          int? fansNumber}) =>
+          String? followNumber,
+          String? fansNumber}) =>
       $apply(FieldCopyWithData({
-        if (password != null) #password: password,
+        if (id != null) #id: id,
         if (username != null) #username: username,
+        if (password != null) #password: password,
         if (phoneNumber != null) #phoneNumber: phoneNumber,
         if (avatar != null) #avatar: avatar,
         if (address != null) #address: address,
@@ -177,8 +182,9 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
       }));
   @override
   User $make(CopyWithData data) => User(
-      password: data.get(#password, or: $value.password),
+      id: data.get(#id, or: $value.id),
       username: data.get(#username, or: $value.username),
+      password: data.get(#password, or: $value.password),
       phoneNumber: data.get(#phoneNumber, or: $value.phoneNumber),
       avatar: data.get(#avatar, or: $value.avatar),
       address: data.get(#address, or: $value.address),
