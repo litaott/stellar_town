@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/ColorTheme.dart';
 
-/// 个人主页页面
+/// 关注列表等切换
 /// @author tt
-/// @date 2023-06-26
+/// @date 2023-06-28
 
-class PersonalPageView extends StatefulWidget {
-  const PersonalPageView({Key? key}) : super(key: key);
+class TabList extends StatefulWidget {
+  const TabList({Key? key}) : super(key: key);
 
   @override
-  PersonalPageViewState createState() => PersonalPageViewState();
+  TabListState createState() => TabListState();
 }
 
-class PersonalPageViewState extends State<PersonalPageView>
-    with SingleTickerProviderStateMixin {
+class TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -61,10 +60,9 @@ class PersonalPageViewState extends State<PersonalPageView>
           ),
         ),
         Expanded(
-          child: Container(
+          child: SizedBox(
             width: screenWidth * 0.95,
             height: screenHeight * 0.1,
-            color: ColorTheme.lightBlue,
             child: TabBarView(
               controller: tabController,
               children: const [

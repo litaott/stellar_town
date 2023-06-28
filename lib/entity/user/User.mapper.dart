@@ -24,8 +24,8 @@ class UserMapper extends ClassMapperBase<User> {
   @override
   final String id = 'User';
 
-  static String _$id(User v) => v.id;
-  static const Field<User, String> _f$id = Field('id', _$id);
+  static int _$id(User v) => v.id;
+  static const Field<User, int> _f$id = Field('id', _$id);
   static String _$username(User v) => v.username;
   static const Field<User, String> _f$username = Field('username', _$username);
   static String _$password(User v) => v.password;
@@ -39,12 +39,11 @@ class UserMapper extends ClassMapperBase<User> {
   static String _$address(User v) => v.address;
   static const Field<User, String> _f$address =
       Field('address', _$address, opt: true, def: '未填写');
-  static String _$gender(User v) => v.gender;
-  static const Field<User, String> _f$gender =
-      Field('gender', _$gender, opt: true, def: '未填写');
-  static String _$age(User v) => v.age;
-  static const Field<User, String> _f$age =
-      Field('age', _$age, opt: true, def: '未填写');
+  static int _$gender(User v) => v.gender;
+  static const Field<User, int> _f$gender =
+      Field('gender', _$gender, opt: true, def: 2);
+  static int _$age(User v) => v.age;
+  static const Field<User, int> _f$age = Field('age', _$age, opt: true, def: 0);
   static String _$signature(User v) => v.signature;
   static const Field<User, String> _f$signature =
       Field('signature', _$signature, opt: true, def: '快来书写你的个性签名吧！');
@@ -134,14 +133,14 @@ extension UserValueCopy<$R, $Out> on ObjectCopyWith<$R, User, $Out> {
 abstract class UserCopyWith<$R, $In extends User, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {String? id,
+      {int? id,
       String? username,
       String? password,
       String? phoneNumber,
       String? avatar,
       String? address,
-      String? gender,
-      String? age,
+      int? gender,
+      int? age,
       String? signature,
       String? followNumber,
       String? fansNumber});
@@ -156,14 +155,14 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
   late final ClassMapperBase<User> $mapper = UserMapper.ensureInitialized();
   @override
   $R call(
-          {String? id,
+          {int? id,
           String? username,
           String? password,
           String? phoneNumber,
           String? avatar,
           String? address,
-          String? gender,
-          String? age,
+          int? gender,
+          int? age,
           String? signature,
           String? followNumber,
           String? fansNumber}) =>
