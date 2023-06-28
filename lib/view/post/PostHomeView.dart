@@ -22,7 +22,7 @@ class PostHomeViewState extends State<PostHomeView> {
         appBar: AppBar(
           title: const PostHomeTop(),
         ),
-        body: const PostHomePost(),
+        body: const PostHomePost(title: '标题',place: '地点',tag: '标签',),
       )
     );
   }
