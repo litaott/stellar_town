@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 /// @author ww
 /// @date 2023-06-27
 
-class PostInfo extends StatelessWidget {
-  const PostInfo({
+class PostContent extends StatelessWidget {
+  const PostContent({
     Key? key,
     required this.title,
     required this.content,

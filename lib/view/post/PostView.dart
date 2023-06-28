@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/component/post/postDetail/PostInfo.dart';
+import 'package:stellar_town/component/post/postDetail/PostContent.dart';
 import 'package:stellar_town/component/post/postDetail/PostOwner.dart';
 import 'package:stellar_town/component/post/postDetail/PostBottum.dart';
 
@@ -20,13 +20,18 @@ class PostViewState extends State<PostView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home:Scaffold(
-          appBar: AppBar(title:const Text('返回'),),
+          appBar: AppBar(
+            title:InkWell(
+              child: const Text('返回'),
+              onTap: () {Navigator.pop(context);},
+            ),//返回,
+          ),
           body:ListView(
             children: const [
               PostOwner(
                 name: '2',
               ),//贴主信息
-              PostInfo(
+              PostContent(
                   title:'标题',
                   content:'内容',
               ),//标题,内容

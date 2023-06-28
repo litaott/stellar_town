@@ -27,13 +27,16 @@ class PostingViewState extends State<PostingView> {
     return MaterialApp(
       home: Scaffold(
         appBar:AppBar(
-             title: const PreferredSize(
-               preferredSize: Size.fromHeight(20),
+             title: PreferredSize(
+               preferredSize: const Size.fromHeight(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('返回',),
-                    Text('发表', textAlign: TextAlign.right),
+                    InkWell(
+                      child: const Text('返回'),
+                      onTap: () {Navigator.pop(context);},
+                    ),//返回
+                    const Text('发表', textAlign: TextAlign.right),
                   ],
                 ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/view/post/PostingView.dart';
 
 /// 帖子主页顶部导航组件
 /// @author ww
@@ -14,19 +15,23 @@ class PostHomeTop extends StatefulWidget {
 class PostHomeTopState extends State<PostHomeTop> {
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
         children: [
-        Expanded(
+        const Expanded(
           child: Center(
             child: Text('附近'),
           ),
         ),
-        IconButton(
-          icon: Icon(Icons.add),
-          tooltip: '发帖',
-          onPressed: null, // null disables the button
+          InkWell(
+            child: const Icon(Icons.add),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PostingView()),
+              );
+            },// null disables the button
         ),
-        Expanded(
+        const Expanded(
           child: Center(
             child: Text('推荐'),
           ),
