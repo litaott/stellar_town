@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/view/explore/ExploreView.dart';
 import 'package:stellar_town/view/user/PersonalView.dart';
 
 import '../view/post/PostHomeView.dart';
@@ -19,9 +20,7 @@ class NavigationState extends State<Navigation> {
 
   final List<Widget> _children = [
     const PostHomeView(),
-    const Center(
-      child: Text('导览'),
-    ),
+    const ExploreView(),
     const PersonalView(),
   ];
 
@@ -40,7 +39,7 @@ class NavigationState extends State<Navigation> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_tree),
-              label: '导览',
+              label: '探索',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),

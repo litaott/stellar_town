@@ -6,7 +6,7 @@ class ConstUrl {
   ConstUrl._();
 
   static const String defaultAvatar =
-      'https://up.enterdesk.com/photo/2011-6-4/enterdesk.com-70CD5C7D85E0DD1D1E548CA0CF22FDF1.jpg';
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F66057a01-1ab3-4d6e-9c3c-da2fe735053c%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1690596693&t=427364d864034d761d03d646d0fdf6af';
 
   /// 服务器
   static const String baseUrl = 'http://49ilim5biema.xiaomiqiu.com';
