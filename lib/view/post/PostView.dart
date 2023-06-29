@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:stellar_town/component/post/postDetail/PostContent.dart';
 import 'package:stellar_town/component/post/postDetail/PostOwner.dart';
 import 'package:stellar_town/component/post/postDetail/PostBottum.dart';
+import 'package:stellar_town/component/post/postDetail/PostTag.dart';
 
 
 /// 帖子详细信息界面
 /// @author ww
-/// @date 2023-06-27
+/// @date 2023-06-29
 
 class PostView extends StatefulWidget {
   const PostView({Key? key}) : super(key: key);
@@ -27,18 +28,15 @@ class PostViewState extends State<PostView> {
             ),//返回,
           ),
           body:ListView(
-            children: const [
-              PostOwner(
-                name: '2',
-              ),//贴主信息
-              PostContent(
-                  title:'标题',
-                  content:'内容',
-              ),//标题,内容
-              PostBottom(
-                tag:"1",
+            children: [
+              PostOwner(),//贴主信息
+              const PostContent(
+                title:'标题',
+                content:'内容',
                 place: '地点',
-              ),//标签，点赞，点赞数
+              ),//标题,内容,地点
+              PostTag(),
+              const PostBottom(),//点赞，点赞数
             ],
           )
         )

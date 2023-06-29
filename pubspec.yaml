@@ -41,6 +41,9 @@ dependencies:
   dart_mappable: ^3.1.1
 
 
+  #允许用户从相机或图库中选择图片，并返回选择的图片给应用程序
+  image_picker: ^0.8.4+3
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

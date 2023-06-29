@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/component/post/postDetail/PostBottum.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/view/post/PostView.dart';
+
+import '../postDetail/PostTag.dart';
+
+/// 帖子简略信息部件
+/// @author ww
+/// @date 2023-06-29
 
 class PostBrief extends StatelessWidget {
   const PostBrief({Key? key,
     required this.title,
     required this.place,
-    required this.tag
   }) : super(key: key);
 
   final String title;
   final String place;
-  final String tag;
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +42,9 @@ class PostBrief extends StatelessWidget {
                     child:Text(title),),
                 ],
               ),//头像，标题
-              Image.asset('assets/image/login.png', fit: BoxFit.cover),//图片
-              PostBottom(
-                place: place,
-                tag: tag,
-              ),
+              Image.asset('assets/image/login.png', fit: BoxFit.cover), //图片
+              Text(place,style: const TextStyle(fontSize: 10,color:Colors.grey),),
+              PostTag(),
             ],
           ),
         ),
