@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/component/post/posting/PostingImageInput.dart';
 
 import '../../component/post/posting/PostingWordInput.dart';
 
@@ -11,7 +10,7 @@ class PostingView extends StatefulWidget {
   const PostingView({Key? key}) : super(key: key);
 
   @override
-  PostingViewState createState() =>PostingViewState();
+  PostingViewState createState() => PostingViewState();
 }
 
 class PostingViewState extends State<PostingView> {
@@ -20,27 +19,30 @@ class PostingViewState extends State<PostingView> {
   TextEditingController placeController = TextEditingController();
   TextEditingController tagController = TextEditingController();
 
-  late String title, content,place,tag;
+  late String title, content, place, tag;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar:AppBar(
-             title: PreferredSize(
-               preferredSize: const Size.fromHeight(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      child: const Text('返回'),
-                      onTap: () {Navigator.pop(context);},
-                    ),//返回
-                    const Text('发表', textAlign: TextAlign.right),
-                  ],
-                ),
+          appBar: AppBar(
+            title: PreferredSize(
+              preferredSize: const Size.fromHeight(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    child: const Text('返回'),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ), //返回
+                  const Text('发表', textAlign: TextAlign.right),
+                ],
+              ),
             ),
           ),
+
         body: ListView(
                children: [
                  PostingWordInput2(
@@ -71,7 +73,7 @@ class PostingViewState extends State<PostingView> {
                ],
              )
       ),
+
     );
   }
 }
-
