@@ -85,6 +85,7 @@ class RegisterViewState extends State<RegisterView> {
     username = usernameController.text.toString();
     password = passwordController.text.toString();
     phoneNumber = phoneNumberController.text.toString();
+
     Map body = {
       'username': username,
       'password': password,

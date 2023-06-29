@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/entity/user/User.dart';
 
 class UserList extends StatefulWidget {
-  const UserList({Key? key}) : super(key: key);
+  const UserList({
+    Key? key,
+    required this.users,
+  }) : super(key: key);
+
+  final List<User> users;
 
   @override
   UserListState createState() => UserListState();
 }
 
 class UserListState extends State<UserList> {
-  late List<UserListTile> userListTiles;
+  late List<UserListTile> userListTiles = [];
+  late List<User> users = widget.users;
 
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < users.length; i++) {
+      userListTiles.add(UserListTile(user: users[i]));
+    }
     return ListView(
       children: userListTiles,
     );
@@ -19,15 +29,28 @@ class UserListState extends State<UserList> {
 }
 
 class UserListTile extends StatefulWidget {
-  const UserListTile({Key? key}) : super(key: key);
+  const UserListTile({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   UserListTileState createState() => UserListTileState();
 }
 
-class UserListTileState extends State<UserList> {
+class UserListTileState extends State<UserListTile> {
+  late User user = widget.user;
+
   @override
   Widget build(BuildContext context) {
-    return ListTile();
+    return ListTile(
+      leading: CircleAvatar(
+        radius: 40,
+        foregroundImage: NetworkImage(user.avatar),
+      ),
+      title: Center(child: Text(user.username)),
+    );
   }
 }

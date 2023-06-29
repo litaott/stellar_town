@@ -99,7 +99,7 @@ class LoginViewState extends State<LoginView> {
     if (body['code'] ~/ 100 == 2) {
       String tokenData = body['data']['token'];
       HttpUtil.token = 'Bearer $tokenData';
-      User.currentUser = User.fromMap(body['data']);
+      User.currentUser = User.fromMap(body['data']['userInfo']);
       //log(HttpUtil.token);
       successDialog();
     } else {
