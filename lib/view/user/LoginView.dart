@@ -2,10 +2,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/Navigation.dart';
-import 'package:stellar_town/component/user/CircleButton.dart';
-import 'package:stellar_town/component/user/RollingBox.dart';
-import 'package:stellar_town/component/user/TextInput.dart';
+import 'package:stellar_town/component/user/login/CircleButton.dart';
+import 'package:stellar_town/component/user/login/RollingBox.dart';
+import 'package:stellar_town/component/user/login/TextInput.dart';
 import 'package:stellar_town/constant/ConstUrl.dart';
+import 'package:stellar_town/entity/user/User.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/TextStyleTheme.dart';
 import 'package:stellar_town/util/HttpUtil.dart';
@@ -96,7 +97,10 @@ class LoginViewState extends State<LoginView> {
     Response response = await HttpUtil.post(ConstUrl.login, body);
     body = response.data;
     if (body['code'] ~/ 100 == 2) {
-      HttpUtil.token = body['data']['token'];
+      String tokenData = body['data']['token'];
+      HttpUtil.token = 'Bearer $tokenData';
+      User.currentUser = User.fromMap(body['data']['userInfo']);
+      //log(HttpUtil.token);
       successDialog();
     } else {
       failDialog(body['message']);

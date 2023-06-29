@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stellar_town/constant/ConstUrl.dart';
 import 'package:stellar_town/entity/user/User.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/ColorTheme.dart';
@@ -10,24 +9,28 @@ import 'package:stellar_town/theme/TextStyleTheme.dart';
 /// @date 2023-06-21
 
 class UserInfoBrief extends StatefulWidget {
-  final User? user;
+  const UserInfoBrief({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
   UserInfoBriefState createState() => UserInfoBriefState();
-
-  const UserInfoBrief({
-    Key? key,
-    this.user,
-  }) : super(key: key);
 }
 
 class UserInfoBriefState extends State<UserInfoBrief> {
-  String username = '当幽灵失灵';
-  String signature = '当你四处逃逸最终还是回到原地，怔怔看着拥挤人群最怕那些都是自己';
-  String avatar = ConstUrl.defaultAvatar;
+  // String username = '当幽灵失灵';
+  // String signature = '当你四处逃逸最终还是回到原地，怔怔看着拥挤人群最怕那些都是自己';
+  // String avatar = ConstUrl.defaultAvatar;
 
   @override
   Widget build(BuildContext context) {
+    String username = widget.user.username;
+    String signature = widget.user.signature;
+    String avatar = widget.user.avatar;
+
     return Container(
       width: screenWidth * 0.95,
       height: 140,
