@@ -4,7 +4,7 @@ import 'package:stellar_town/main.dart';
 
 /// 帖子总览界面
 /// @author ww
-/// @date 2023-06-24
+/// @date 2023-06-29
 
 class PostHomePost extends StatelessWidget {
   const PostHomePost({
@@ -20,7 +20,6 @@ class PostHomePost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     screenWidth = MediaQuery.of(context).size.width;
-    screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child:SizedBox(
         width: screenWidth*0.95,
@@ -34,7 +33,7 @@ class PostHomePost extends StatelessWidget {
           },
           itemBuilder: (BuildContext context, int index) {
             return
-              PostBrief(title: title, place: place, tag: tag);
+              PostBrief(title: title, place: place,);
           }
         )
       )

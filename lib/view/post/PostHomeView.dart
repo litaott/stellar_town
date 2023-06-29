@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/post/postHome/PostHomeTop.dart';
 
-import '../../component/post/postHome/PostHomePost.dart';
+import '../../component/post/postHome/PostHome.dart';
 
 /// 帖子总览界面
 /// @author ww
-/// @date 2023-06-27
+/// @date 2023-06-29
 
 class PostHomeView extends StatefulWidget {
   const PostHomeView({Key? key}) : super(key: key);

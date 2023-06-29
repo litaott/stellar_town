@@ -5,7 +5,7 @@ import '../../component/post/posting/PostingWordInput.dart';
 
 /// 帖子发表界面
 /// @author ww
-/// @date 2023-06-26
+/// @date 2023-06-29
 
 class PostingView extends StatefulWidget {
   const PostingView({Key? key}) : super(key: key);
@@ -55,6 +55,7 @@ class PostingViewState extends State<PostingView> {
                   maxLine:5,
                   rowName: '内容',
                 ),//内容
+                 const PostingImageInput(),
                  PostingWordInput2(
                   controller: placeController,
                   hintText: '请输入地点',
