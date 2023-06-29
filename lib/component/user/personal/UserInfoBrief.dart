@@ -9,15 +9,15 @@ import 'package:stellar_town/theme/TextStyleTheme.dart';
 /// @date 2023-06-21
 
 class UserInfoBrief extends StatefulWidget {
-  final User user;
-
-  @override
-  UserInfoBriefState createState() => UserInfoBriefState();
-
   const UserInfoBrief({
     Key? key,
     required this.user,
   }) : super(key: key);
+
+  final User user;
+
+  @override
+  UserInfoBriefState createState() => UserInfoBriefState();
 }
 
 class UserInfoBriefState extends State<UserInfoBrief> {

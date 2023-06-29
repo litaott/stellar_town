@@ -25,11 +25,13 @@ class UserMapper extends ClassMapperBase<User> {
   final String id = 'User';
 
   static int _$id(User v) => v.id;
-  static const Field<User, int> _f$id = Field('id', _$id);
+  static const Field<User, int> _f$id = Field('id', _$id, opt: true, def: 0);
   static String _$username(User v) => v.username;
-  static const Field<User, String> _f$username = Field('username', _$username);
+  static const Field<User, String> _f$username =
+      Field('username', _$username, opt: true, def: '未知');
   static String _$password(User v) => v.password;
-  static const Field<User, String> _f$password = Field('password', _$password);
+  static const Field<User, String> _f$password =
+      Field('password', _$password, opt: true, def: '未知');
   static String _$phoneNumber(User v) => v.phoneNumber;
   static const Field<User, String> _f$phoneNumber =
       Field('phoneNumber', _$phoneNumber, opt: true, def: '未填写');

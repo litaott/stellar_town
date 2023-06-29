@@ -22,9 +22,9 @@ class User with UserMappable {
   String fansNumber;
 
   User({
-    required this.id,
-    required this.username,
-    required this.password,
+    this.id = 0,
+    this.username = '未知',
+    this.password = '未知',
     this.phoneNumber = '未填写',
     this.avatar = ConstUrl.defaultAvatar,
     this.address = '未填写',
@@ -39,6 +39,5 @@ class User with UserMappable {
   static const fromMap = UserMapper.fromMap;
   static const fromJson = UserMapper.fromJson;
 
-  static User defaultUser = User(id: 0, username: '未知用户', password: '');
   static late User currentUser;
 }

@@ -5,18 +5,23 @@ import 'package:stellar_town/component/user/personal/UserInfoBrief.dart';
 import 'package:stellar_town/entity/user/User.dart';
 import 'package:stellar_town/main.dart';
 
-/// 用户个人相关页面
+/// 用户主页
 /// @author tt
-/// @date 2023-06-20
+/// @date 2023-06-28
 
-class PersonalView extends StatefulWidget {
-  const PersonalView({Key? key}) : super(key: key);
+class PersonalPageView extends StatefulWidget {
+  const PersonalPageView({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User user;
 
   @override
-  PersonalViewState createState() => PersonalViewState();
+  PersonalPageViewState createState() => PersonalPageViewState();
 }
 
-class PersonalViewState extends State<PersonalView> {
+class PersonalPageViewState extends State<PersonalPageView> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -37,7 +42,7 @@ class PersonalViewState extends State<PersonalView> {
                 height: 20,
               ),
               UserInfoBrief(
-                user: User.currentUser,
+                user: widget.user,
               ),
               SizedBox(
                 width: screenWidth,
@@ -45,7 +50,7 @@ class PersonalViewState extends State<PersonalView> {
               ),
               Expanded(
                 child: TabList(
-                  userId: User.currentUser.id,
+                  userId: widget.user.id,
                 ),
               ),
             ],
