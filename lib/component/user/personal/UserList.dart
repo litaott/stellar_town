@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/entity/user/User.dart';
 
+/// 用户列表组件
+/// @author tt
+/// @date 2023-06-28
+
 class UserList extends StatefulWidget {
   const UserList({
     Key? key,
@@ -47,7 +51,6 @@ class UserListTileState extends State<UserListTile> {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        radius: 40,
         foregroundImage: NetworkImage(user.avatar),
       ),
       title: Center(child: Text(user.username)),
