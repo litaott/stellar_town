@@ -42,38 +42,35 @@ class PostingViewState extends State<PostingView> {
               ),
             ),
           ),
-
-        body: ListView(
-               children: [
-                 PostingWordInput2(
-                  controller: titleController,
-                  hintText: '请输入标题',
-                  maxLine:1,
-                  rowName: '标题',
-                ), //标题
-                 PostingWordInput2(
-                  controller: contentController,
-                  hintText: '请输入内容',
-                  maxLine:5,
-                  rowName: '内容',
-                ),//内容
-                 const PostingImageInput(),
-                 PostingWordInput2(
-                  controller: placeController,
-                  hintText: '请输入地点',
-                  maxLine:1,
-                  rowName: '地点',
-                ),//地点
-                 PostingWordInput2(
-                  controller: tagController,
-                  hintText: '请输入标签',
-                  maxLine:1,
-                  rowName: '标签',
-                  ),//标签
-               ],
-             )
-      ),
-
+          body: ListView(
+            children: [
+              PostingWordInput2(
+                controller: titleController,
+                hintText: '请输入标题',
+                maxLine: 1,
+                rowName: '标题',
+              ), //标题
+              PostingWordInput2(
+                controller: contentController,
+                hintText: '请输入内容',
+                maxLine: 5,
+                rowName: '内容',
+              ), //内容
+              //const PostingImageInput(),
+              PostingWordInput2(
+                controller: placeController,
+                hintText: '请输入地点',
+                maxLine: 1,
+                rowName: '地点',
+              ), //地点
+              PostingWordInput2(
+                controller: tagController,
+                hintText: '请输入标签',
+                maxLine: 1,
+                rowName: '标签',
+              ), //标签
+            ],
+          )),
     );
   }
 }
