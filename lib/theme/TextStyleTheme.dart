@@ -33,4 +33,37 @@ class TextStyleTheme {
     color: Colors.white,
     fontSize: 16,
   );
+
+  static const TextStyle dateStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 16,
+    letterSpacing: 4,
+  );
+
+  static const TextStyle cityStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 48,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const TextStyle tempStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 54,
+  );
+
+  static const TextStyle weatherTextStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 20,
+  );
+
+  static const TextStyle infoCardStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 18,
+  );
+
+  static const TextStyle cardTitleStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
 }
