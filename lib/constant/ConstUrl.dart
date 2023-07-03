@@ -10,7 +10,7 @@ class ConstUrl {
 
   /// 服务器
   static const String baseUrl = 'http://49ilim5biema.xiaomiqiu.com';
-  //static const String baseUrl = 'http://10.128.131.255:8080';
+  //static const String baseUrl = 'http://10.128.147.181:8080';
 
   /// 用户相关
   static const String userBaseUrl = '/api/v1/user';
@@ -33,4 +33,30 @@ class ConstUrl {
   static const String imageBaseUrl = '/api/v1/minio/upload';
   static const String uploadAvatar = '$imageBaseUrl/avatar';
   static const String uploadPost = '$imageBaseUrl/post';
+
+  /// 天气相关
+  static const String weatherBaseUrl = '/api/v2/weather';
+  static const String getWeatherByCityName = '$weatherBaseUrl/now/cityName';
+  static const String getWeatherByLocation = '$weatherBaseUrl/now/location';
+  static const String getMoreWeatherByCityName = '$weatherBaseUrl/7d/cityName';
+  static const String getMoreWeatherByLocation = '$weatherBaseUrl/7d/location';
+  static const String getLocationByCityName =
+      '$weatherBaseUrl/location/cityName';
+  static const String getCityNameByLocation =
+      '$weatherBaseUrl/cityName/location';
+
+  /// 天文相关
+  static const String astronomyBaseUrl = '/api/v2/astronomy';
+  static const String getSpecialTimeByCityName =
+      '$astronomyBaseUrl/specialTime/cityName';
+  static const String getSpecialTimeByLocation =
+      '$astronomyBaseUrl/specialTime/location';
+  static const String getMoonPhaseByCityName =
+      '$astronomyBaseUrl/moon/cityName';
+  static const String getMoonPhaseByLocation =
+      '$astronomyBaseUrl/moon/location';
+  static const String getTwilightByCityName =
+      '$astronomyBaseUrl/twilight/cityName';
+  static const String getTwilightByLocation =
+      '$astronomyBaseUrl/twilight/location';
 }
