@@ -24,35 +24,54 @@ class PostMapper extends ClassMapperBase<Post> {
   @override
   final String id = 'Post';
 
+  static int _$id(Post v) => v.id;
+  static const Field<Post, int> _f$id = Field('id', _$id, opt: true, def: 1);
+  static int _$userId(Post v) => v.userId;
+  static const Field<Post, int> _f$userId =
+      Field('userId', _$userId, opt: true, def: 12345);
+  static int _$likeCount(Post v) => v.likeCount;
+  static const Field<Post, int> _f$likeCount =
+      Field('likeCount', _$likeCount, opt: true, def: 0);
   static String _$title(Post v) => v.title;
-  static const Field<Post, String> _f$title = Field('title', _$title);
-  static String _$description(Post v) => v.description;
-  static const Field<Post, String> _f$description =
-      Field('description', _$description);
-  static String _$site(Post v) => v.site;
-  static const Field<Post, String> _f$site = Field('site', _$site);
+  static const Field<Post, String> _f$title = Field('title', _$title,
+      opt: true, def: '这是一个很长很长很长很长很长很长很长很长很长很长很长很长的标题');
+  static String _$image(Post v) => v.image;
+  static const Field<Post, String> _f$image =
+      Field('image', _$image, opt: true, def: 'assets/image/login.png');
+  static String _$content(Post v) => v.content;
+  static const Field<Post, String> _f$content = Field('content', _$content,
+      opt: true,
+      def:
+          '这里有很多很多很多很多很多很很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多多很多很多很很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多回电话1好内容');
+  static String _$address(Post v) => v.address;
+  static const Field<Post, String> _f$address =
+      Field('address', _$address, opt: true, def: '湖北省武汉市武昌区珞珈山街道八一路299号');
   static String _$tag(Post v) => v.tag;
-  static const Field<Post, String> _f$tag = Field('tag', _$tag);
-  static int _$likeNumber(Post v) => v.likeNumber;
-  static const Field<Post, int> _f$likeNumber =
-      Field('likeNumber', _$likeNumber);
+  static const Field<Post, String> _f$tag =
+      Field('tag', _$tag, opt: true, def: '星野摄影');
 
   @override
   final Map<Symbol, Field<Post, dynamic>> fields = const {
+    #id: _f$id,
+    #userId: _f$userId,
+    #likeCount: _f$likeCount,
     #title: _f$title,
-    #description: _f$description,
-    #site: _f$site,
+    #image: _f$image,
+    #content: _f$content,
+    #address: _f$address,
     #tag: _f$tag,
-    #likeNumber: _f$likeNumber,
   };
 
   static Post _instantiate(DecodingData data) {
     return Post(
+        id: data.dec(_f$id),
+        userId: data.dec(_f$userId),
+        likeCount: data.dec(_f$likeCount),
         title: data.dec(_f$title),
-        description: data.dec(_f$description),
-        site: data.dec(_f$site),
-        tag: data.dec(_f$tag),
-        likeNumber: data.dec(_f$likeNumber));
+        image: data.dec(_f$image),
+        content: data.dec(_f$content),
+        address: data.dec(_f$address),
+        tag: data.dec(_f$tag));
   }
 
   @override
@@ -104,11 +123,14 @@ extension PostValueCopy<$R, $Out> on ObjectCopyWith<$R, Post, $Out> {
 abstract class PostCopyWith<$R, $In extends Post, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   $R call(
-      {String? title,
-      String? description,
-      String? site,
-      String? tag,
-      int? likeNumber});
+      {int? id,
+      int? userId,
+      int? likeCount,
+      String? title,
+      String? image,
+      String? content,
+      String? address,
+      String? tag});
   PostCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -120,25 +142,34 @@ class _PostCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Post, $Out>
   late final ClassMapperBase<Post> $mapper = PostMapper.ensureInitialized();
   @override
   $R call(
-          {String? title,
-          String? description,
-          String? site,
-          String? tag,
-          int? likeNumber}) =>
+          {int? id,
+          int? userId,
+          int? likeCount,
+          String? title,
+          String? image,
+          String? content,
+          String? address,
+          String? tag}) =>
       $apply(FieldCopyWithData({
+        if (id != null) #id: id,
+        if (userId != null) #userId: userId,
+        if (likeCount != null) #likeCount: likeCount,
         if (title != null) #title: title,
-        if (description != null) #description: description,
-        if (site != null) #site: site,
-        if (tag != null) #tag: tag,
-        if (likeNumber != null) #likeNumber: likeNumber
+        if (image != null) #image: image,
+        if (content != null) #content: content,
+        if (address != null) #address: address,
+        if (tag != null) #tag: tag
       }));
   @override
   Post $make(CopyWithData data) => Post(
+      id: data.get(#id, or: $value.id),
+      userId: data.get(#userId, or: $value.userId),
+      likeCount: data.get(#likeCount, or: $value.likeCount),
       title: data.get(#title, or: $value.title),
-      description: data.get(#description, or: $value.description),
-      site: data.get(#site, or: $value.site),
-      tag: data.get(#tag, or: $value.tag),
-      likeNumber: data.get(#likeNumber, or: $value.likeNumber));
+      image: data.get(#image, or: $value.image),
+      content: data.get(#content, or: $value.content),
+      address: data.get(#address, or: $value.address),
+      tag: data.get(#tag, or: $value.tag));
 
   @override
   PostCopyWith<$R2, Post, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

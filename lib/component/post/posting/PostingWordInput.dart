@@ -52,7 +52,7 @@ import 'package:flutter/material.dart';
 }*/
 
 class PostingWordInput2 extends StatelessWidget {
-  PostingWordInput2({
+  const PostingWordInput2({
     Key? key,
     required this.controller,
     required this.hintText,
@@ -62,7 +62,7 @@ class PostingWordInput2 extends StatelessWidget {
 
   final TextEditingController controller;
   final String hintText;
-  late int maxLine;
+  final int maxLine;
   final String rowName;
 
   @override

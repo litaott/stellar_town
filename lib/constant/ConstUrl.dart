@@ -28,6 +28,13 @@ class ConstUrl {
   static const String getOthersFans = '$userBaseUrl/getFans';
 
   /// 帖子相关
+  static const String postBaseUrl = '/api/v1/forum';
+  static const String post = '$postBaseUrl/post';
+  static const String like = '$postBaseUrl/like';
+  static const String getPost = '$postBaseUrl/getPost';
+  static const String localRecommendation = '$postBaseUrl/localRecommendation';
+  static const String recommendation = '$postBaseUrl/recommendation';
+
 
   /// 图片相关
   static const String imageBaseUrl = '/api/v1/minio/upload';

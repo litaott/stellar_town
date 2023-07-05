@@ -27,7 +27,7 @@ class User with UserMappable {
     this.password = '未知',
     this.phoneNumber = '未填写',
     this.avatar = ConstUrl.defaultAvatar,
-    this.address = '未填写',
+    this.address = '武汉',
     this.gender = 2,
     this.age = 0,
     this.signature = '快来书写你的个性签名吧！',

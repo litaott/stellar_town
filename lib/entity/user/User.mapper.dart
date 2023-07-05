@@ -40,7 +40,7 @@ class UserMapper extends ClassMapperBase<User> {
       Field('avatar', _$avatar, opt: true, def: ConstUrl.defaultAvatar);
   static String _$address(User v) => v.address;
   static const Field<User, String> _f$address =
-      Field('address', _$address, opt: true, def: '未填写');
+      Field('address', _$address, opt: true, def: '武汉');
   static int _$gender(User v) => v.gender;
   static const Field<User, int> _f$gender =
       Field('gender', _$gender, opt: true, def: 2);

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-/// 帖子详细信息底部组件(点赞，点赞数)
+/// 帖子点赞组件
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
-class PostBottom extends StatefulWidget {
-  const PostBottom({super.key});
+class PostLike extends StatefulWidget {
+  const PostLike({super.key});
 
   @override
-  _PostBottomState createState() => _PostBottomState();}
+  _PostLikeState createState() => _PostLikeState();}
 
-class _PostBottomState extends State<PostBottom>{
+class _PostLikeState extends State<PostLike>{
   bool _isLiked = false;
   int _likeNum = 41;
 
@@ -33,16 +33,17 @@ class _PostBottomState extends State<PostBottom>{
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         const SizedBox(
-            width:100,
+            width:75,
             child: Align(
               alignment: Alignment.centerRight,
               child:SizedBox(
-                  child: Text('10000'), //child: Text('$_likeNum'),
+                  child: Text('100000000'), //child: Text('$_likeNum'),
               ),
             ),
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
+        SizedBox(
+          width: 20,
+          height: 50,
           child: IconButton(
             padding: const EdgeInsets.all(0),
             alignment: Alignment.centerRight,

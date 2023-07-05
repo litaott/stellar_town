@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stellar_town/main.dart';
+import 'package:stellar_town/theme/TextStyleTheme.dart';
 
-/// 帖子详细信息主体组件(标题，内容（图片还没写）)
+/// 帖子详细信息主体组件(标题，图片，内容，地点)
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostContent extends StatelessWidget {
   const PostContent({
@@ -18,17 +20,17 @@ class PostContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(32),
-    // height: 120,
-      child: Column(
-        children: [
-          Text(title),
-          Image.asset('assets/image/login.png', fit: BoxFit.scaleDown),
-          Text(content),
-          Text(place,style: const TextStyle(fontSize: 10,color:Colors.grey),),
-        ],
-      )
+    return Column(
+      children: [
+        Center(child: Text(title,style: TextStyleTheme.postTitleStyle,),),
+        Image.asset('assets/image/login.png', fit: BoxFit.scaleDown),
+        SizedBox(
+          width: screenWidth,
+          child: Text(place,style:TextStyleTheme.postPlaceStyle,),),
+        SizedBox(
+          width: screenWidth,
+          child: Text(content,style: TextStyleTheme.postContentStyle,),),
+      ],
     );
   }
 }
