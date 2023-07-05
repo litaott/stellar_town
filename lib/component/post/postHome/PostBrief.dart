@@ -11,7 +11,7 @@ import '../postDetail/PostTag.dart';
 
 /// 帖子简略信息部件
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostBrief extends StatelessWidget {
   PostBrief({Key? key,

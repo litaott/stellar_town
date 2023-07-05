@@ -3,8 +3,8 @@ import 'package:stellar_town/main.dart';
 
 /// 帖子标签部件
 /// @author ww
-/// @date 2023-06-29
-///
+/// @date 2023-07-05
+
 class PostTag extends StatelessWidget{
   PostTag({super.key, required this.tag});
   final String  tag;

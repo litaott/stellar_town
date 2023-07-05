@@ -9,7 +9,7 @@ import 'PostBrief.dart';
 
 /// 帖子列表组件
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostList extends StatefulWidget {
   PostList({Key? key}) : super(key: key);

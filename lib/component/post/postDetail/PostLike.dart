@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// 帖子详细信息底部组件(点赞，点赞数)
+/// 帖子点赞组件
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostLike extends StatefulWidget {
   const PostLike({super.key});

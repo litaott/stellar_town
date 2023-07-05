@@ -9,7 +9,7 @@ import '../../util/HttpUtil.dart';
 
 /// 帖子发表界面
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostingView extends StatefulWidget {
   const PostingView({Key? key}) : super(key: key);

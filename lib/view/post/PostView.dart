@@ -12,7 +12,7 @@ import '../../util/HttpUtil.dart';
 
 /// 帖子详细信息界面
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostView extends StatefulWidget {
   PostView({Key? key, required this.postId}) : super(key: key);

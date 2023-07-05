@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/TextStyleTheme.dart';
 
-/// 帖子详细信息主体组件(标题，内容（图片还没写）)
+/// 帖子详细信息主体组件(标题，图片，内容，地点)
 /// @author ww
-/// @date 2023-06-29
+/// @date 2023-07-05
 
 class PostContent extends StatelessWidget {
   const PostContent({

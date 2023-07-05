@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/post/postDetail/PostLike.dart';
 
-/// 帖子主信息组件(头像，名字，关注)
+/// 帖子主信息组件(头像，名字，关注，点赞)
 /// @author ww
 /// @date 2023-06-29
 
