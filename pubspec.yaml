@@ -64,7 +64,7 @@ dependencies:
   # 页面切换
   smooth_page_indicator: ^1.1.0
 
-
+  image_picker: ^0.8.4+3
 
 
   # The following adds the Cupertino Icons font to your application.
