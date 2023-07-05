@@ -18,4 +18,9 @@ class ColorTheme {
 
   ///青色
   static const Color cyan = Color(0xFF21FFF3);
+
+  ///浅浅蓝色
+  static const Color moreLightBlue = Color(0x7700FFFF);
+
+  static const Color sliver = Color(0xFF87ceeb);
 }

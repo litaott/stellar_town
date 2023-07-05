@@ -40,9 +40,26 @@ dependencies:
   # 实体类/Json转换
   dart_mappable: ^3.1.1
 
+  # 获取icon
+  flutter_svg: ^2.0.7
+
+  # 谷歌字体
+  google_fonts: ^5.1.0
+
+  # 日期格式
+  date_format: ^2.0.7
+
+  # 动画
+  simple_animations: ^5.0.2
+
+  # 选择器
+  flutter_picker: ^2.1.0
+
+  # 转拼音
+  lpinyin: ^2.0.3
 
   #允许用户从相机或图库中选择图片，并返回选择的图片给应用程序
-  image_picker: ^0.8.4+3
+  #image_picker: ^0.8.4+3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -75,6 +92,7 @@ flutter:
   # 资源文件
   assets:
     - assets/image/
+    - assets/icons/
     - fonts/
 
   fonts:

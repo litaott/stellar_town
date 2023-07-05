@@ -13,7 +13,7 @@ class HttpUtil {
     receiveTimeout: 5000,
   );
 
-  static late String token;
+  static String token = '';
 
   // Create a new instance of Dio with custom options
   static Dio noTokenInstance() {
