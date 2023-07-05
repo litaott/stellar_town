@@ -33,4 +33,22 @@ class TextStyleTheme {
     color: Colors.white,
     fontSize: 16,
   );
+
+  ///帖子标题
+  static const TextStyle postTitleStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 32,
+  );
+
+  ///帖子内容
+  static const TextStyle postContentStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 15,
+  );
+
+  ///帖子地点
+  static const TextStyle postPlaceStyle = TextStyle(
+    color:Colors.grey,
+    fontSize: 10,
+  );
 }

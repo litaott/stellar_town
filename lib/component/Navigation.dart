@@ -19,7 +19,7 @@ class NavigationState extends State<Navigation> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    const PostHomeView(),
+    PostHomeView(),
     const ExploreView(),
     const PersonalView(),
   ];
