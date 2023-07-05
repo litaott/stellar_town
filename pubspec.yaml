@@ -58,8 +58,13 @@ dependencies:
   # 转拼音
   lpinyin: ^2.0.3
 
-  #允许用户从相机或图库中选择图片，并返回选择的图片给应用程序
-  #image_picker: ^0.8.4+3
+  # 时间轴
+  timelines: ^0.1.0
+
+  # 页面切换
+  smooth_page_indicator: ^1.1.0
+
+
 
 
   # The following adds the Cupertino Icons font to your application.

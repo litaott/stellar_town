@@ -18,10 +18,16 @@ import 'package:stellar_town/main.dart';
 import 'package:stellar_town/theme/ColorTheme.dart';
 import 'package:stellar_town/theme/TextStyleTheme.dart';
 import 'package:stellar_town/util/HttpUtil.dart';
+import 'package:stellar_town/view/explore/AttractionView.dart';
+
+import '../../component/explore/TimeAxis.dart';
 
 /// 探索页面
 /// @author tt
 /// @date 2023-06-29
+
+/// 当前城市
+String city = '武汉';
 
 class ExploreView extends StatefulWidget {
   const ExploreView({super.key});
@@ -31,32 +37,33 @@ class ExploreView extends StatefulWidget {
 }
 
 class ExploreViewState extends State<ExploreView> with AnimationMixin {
-  String province = '湖北';
-  String city = '武汉';
+  /// 卡片边距
   double crossPadding = (screenWidth - len - wid) / 3 * 2;
+
+  /// 动画类与控制器
   late Animation<double> dateIn, lenAni, widAni;
   late AnimationController cardCtrl, dateCtrl;
 
   @override
   void initState() {
-    /// 初始化动画
-    cardCtrl = createController();
-    dateCtrl = createController();
     initAnimations();
 
-    /// 获取天气、气象信息
     // resetAllInfo();
 
     super.initState();
   }
 
+  /// 获取天气、气象信息
   void resetAllInfo() {
     String cityPinyin = PinyinHelper.getPinyinE(city, separator: '');
     getWeather(cityPinyin).then(resetWeather);
     getAstronomy(cityPinyin).then(resetAstronomy);
   }
 
+  /// 初始化动画
   void initAnimations() {
+    cardCtrl = createController();
+    dateCtrl = createController();
     dateIn = Tween(begin: -screenWidth, end: 0.0)
         .chain(CurveTween(curve: Curves.fastEaseInToSlowEaseOut))
         .animate(dateCtrl);
@@ -70,75 +77,81 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
 
   @override
   Widget build(BuildContext context) {
-    return buildMaterialApp();
-  }
-
-  MaterialApp buildMaterialApp() {
     return MaterialApp(
       home: Scaffold(
-        // backgroundColor: ColorTheme.sliver,
         appBar: buildAppBar(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: PageView(
+          scrollDirection: Axis.vertical,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    PlayAnimationBuilder<double>(
-                      tween: Tween(begin: -100, end: 0),
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.fastEaseInToSlowEaseOut,
-                      onCompleted: () {
-                        dateCtrl.play(
-                            duration: const Duration(milliseconds: 500));
-                        cardCtrl.play(
-                            duration: const Duration(milliseconds: 700));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          ' >$city<',
-                          style: TextStyleTheme.cityStyle,
-                        ),
-                      ),
-                      builder: (context, value, child) {
-                        return Transform.translate(
-                          offset: Offset(value, 0),
-                          child: child,
-                        );
-                      },
-                    ),
-                    Transform.translate(
-                      offset: Offset(dateIn.value, 0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Chip(
-                          label: Text(formatDate(
-                              DateTime.now(), [yyyy, ' / ', mm, ' / ', dd])),
-                          labelStyle: TextStyleTheme.dateStyle,
-                          backgroundColor: ColorTheme.lightBlue,
-                          elevation: 2,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: Transform.translate(
-                    offset: Offset(0 - dateIn.value, 0),
-                    child: buildWeatherCard(),
-                  ),
-                ),
-              ],
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildTitle(),
+                  buildCards(),
+                  buildAxis(),
+                ],
+              ),
             ),
-            buildCards(),
+            const AttractionView(),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            PlayAnimationBuilder<double>(
+              tween: Tween(begin: -100, end: 0),
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.fastEaseInToSlowEaseOut,
+              onCompleted: () {
+                dateCtrl.play(duration: const Duration(milliseconds: 500));
+                cardCtrl.play(duration: const Duration(milliseconds: 700));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  ' >$city<',
+                  style: TextStyleTheme.cityStyle,
+                ),
+              ),
+              builder: (context, value, child) {
+                return Transform.translate(
+                  offset: Offset(value, 0),
+                  child: child,
+                );
+              },
+            ),
+            Transform.translate(
+              offset: Offset(dateIn.value, 0),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Chip(
+                  label: Text(
+                      formatDate(DateTime.now(), [yyyy, ' / ', mm, ' / ', dd])),
+                  labelStyle: TextStyleTheme.dateStyle,
+                  backgroundColor: ColorTheme.lightBlue,
+                  elevation: 2,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Expanded(
+          child: Transform.translate(
+            offset: Offset(0 - dateIn.value, 0),
+            child: buildWeatherCard(),
+          ),
+        ),
+      ],
     );
   }
 
@@ -242,40 +255,43 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
     );
   }
 
+  /// 全部气象信息获取
   Future<Astronomy> getAstronomy(String city) async {
-    String url;
-    Response response;
-    Map<String, dynamic> body, data1, data2, data3;
-    url = '${ConstUrl.getMoonPhaseByCityName}?cityName=$city';
-    response = await HttpUtil.getJson(url);
+    String url1, url2, url3;
+    Future<Map<String, dynamic>> data1, data2, data3;
+
+    url1 = '${ConstUrl.getMoonPhaseByCityName}?cityName=$city';
+    data1 = getAstronomyItem(url1, true);
+
+    url2 = '${ConstUrl.getSpecialTimeByCityName}?cityName=$city';
+    data2 = getAstronomyItem(url2, false);
+
+    // url3 = '${ConstUrl.getTwilightByCityName}?cityName=$city';
+    // data3 = getAstronomyItem(url3, false);
+
+    List<Map<String, dynamic>> datas = await Future.wait([data1, data2]);
+
+    // datas[1].addAll(datas[2]);
+    datas[0].addAll(datas[1]);
+    return Astronomy.fromMap(datas[0]);
+  }
+
+  /// 单个气象信息获取
+  Future<Map<String, dynamic>> getAstronomyItem(String url, bool isList) async {
+    Map<String, dynamic> data, body;
+    Response response = await HttpUtil.getJson(url);
     body = response.data;
     if (body['code'] ~/ 100 == 2) {
-      data1 = body['data'][0];
+      if (isList) {
+        data = body['data'][0];
+      } else {
+        data = body['data'];
+      }
     } else {
-      data1 = {};
-      log('getMoonPhaseByCityName:fail');
+      data = {};
+      log('$url:fail');
     }
-    url = '${ConstUrl.getSpecialTimeByCityName}?cityName=$city';
-    response = await HttpUtil.getJson(url);
-    body = response.data;
-    if (body['code'] ~/ 100 == 2) {
-      data2 = body['data'];
-    } else {
-      data2 = {};
-      log('getSpecialTimeByCityName:fail');
-    }
-    url = '${ConstUrl.getTwilightByCityName}?cityName=$city';
-    response = await HttpUtil.getJson(url);
-    body = response.data;
-    if (body['code'] ~/ 100 == 2) {
-      data3 = body['data'];
-    } else {
-      data3 = {};
-      log('getTwilightByCityName:fail');
-    }
-    data2.addAll(data3);
-    data1.addAll(data2);
-    return Astronomy.fromMap(data1);
+    return data;
   }
 
   Future<Weather> getWeather(String city) async {
