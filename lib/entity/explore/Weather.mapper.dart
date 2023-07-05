@@ -26,49 +26,49 @@ class WeatherMapper extends ClassMapperBase<Weather> {
 
   static String _$obsTime(Weather v) => v.obsTime;
   static const Field<Weather, String> _f$obsTime =
-      Field('obsTime', _$obsTime, opt: true, def: '未知');
+      Field('obsTime', _$obsTime, opt: true, def: '---');
   static String _$temp(Weather v) => v.temp;
   static const Field<Weather, String> _f$temp =
-      Field('temp', _$temp, opt: true, def: '未知');
+      Field('temp', _$temp, opt: true, def: '---');
   static String _$feelsLike(Weather v) => v.feelsLike;
   static const Field<Weather, String> _f$feelsLike =
-      Field('feelsLike', _$feelsLike, opt: true, def: '未知');
+      Field('feelsLike', _$feelsLike, opt: true, def: '---');
   static String _$icon(Weather v) => v.icon;
   static const Field<Weather, String> _f$icon =
-      Field('icon', _$icon, opt: true, def: '未知');
+      Field('icon', _$icon, opt: true, def: '100');
   static String _$text(Weather v) => v.text;
   static const Field<Weather, String> _f$text =
-      Field('text', _$text, opt: true, def: '未知');
+      Field('text', _$text, opt: true, def: '---');
   static String _$wind360(Weather v) => v.wind360;
   static const Field<Weather, String> _f$wind360 =
-      Field('wind360', _$wind360, opt: true, def: '未知');
+      Field('wind360', _$wind360, opt: true, def: '---');
   static String _$windDir(Weather v) => v.windDir;
   static const Field<Weather, String> _f$windDir =
-      Field('windDir', _$windDir, opt: true, def: '未知');
+      Field('windDir', _$windDir, opt: true, def: '---');
   static String _$windScale(Weather v) => v.windScale;
   static const Field<Weather, String> _f$windScale =
-      Field('windScale', _$windScale, opt: true, def: '未知');
+      Field('windScale', _$windScale, opt: true, def: '---');
   static String _$windSpeed(Weather v) => v.windSpeed;
   static const Field<Weather, String> _f$windSpeed =
-      Field('windSpeed', _$windSpeed, opt: true, def: '未知');
+      Field('windSpeed', _$windSpeed, opt: true, def: '---');
   static String _$humidity(Weather v) => v.humidity;
   static const Field<Weather, String> _f$humidity =
-      Field('humidity', _$humidity, opt: true, def: '未知');
+      Field('humidity', _$humidity, opt: true, def: '---');
   static String _$precip(Weather v) => v.precip;
   static const Field<Weather, String> _f$precip =
-      Field('precip', _$precip, opt: true, def: '未知');
+      Field('precip', _$precip, opt: true, def: '---');
   static String _$pressure(Weather v) => v.pressure;
   static const Field<Weather, String> _f$pressure =
-      Field('pressure', _$pressure, opt: true, def: '未知');
+      Field('pressure', _$pressure, opt: true, def: '---');
   static String _$vis(Weather v) => v.vis;
   static const Field<Weather, String> _f$vis =
-      Field('vis', _$vis, opt: true, def: '未知');
+      Field('vis', _$vis, opt: true, def: '---');
   static String _$cloud(Weather v) => v.cloud;
   static const Field<Weather, String> _f$cloud =
-      Field('cloud', _$cloud, opt: true, def: '未知');
+      Field('cloud', _$cloud, opt: true, def: '---');
   static String _$dew(Weather v) => v.dew;
   static const Field<Weather, String> _f$dew =
-      Field('dew', _$dew, opt: true, def: '未知');
+      Field('dew', _$dew, opt: true, def: '---');
 
   @override
   final Map<Symbol, Field<Weather, dynamic>> fields = const {

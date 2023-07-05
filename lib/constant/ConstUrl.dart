@@ -9,7 +9,8 @@ class ConstUrl {
       'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F66057a01-1ab3-4d6e-9c3c-da2fe735053c%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1690596693&t=427364d864034d761d03d646d0fdf6af';
 
   /// 服务器
-  static const String baseUrl = 'http://49ilim5biema.xiaomiqiu.com';
+  // static const String baseUrl = 'http://49ilim5biema.xiaomiqiu.com';
+  static const String baseUrl = 'http://101.37.252.1:8080';
   //static const String baseUrl = 'http://10.128.147.181:8080';
 
   /// 用户相关
@@ -66,4 +67,9 @@ class ConstUrl {
       '$astronomyBaseUrl/twilight/cityName';
   static const String getTwilightByLocation =
       '$astronomyBaseUrl/twilight/location';
+
+  /// 风景相关
+  static const String attractionBaseUrl = '/api/v1/attraction';
+  static const String getAttractionByCityName =
+      '$attractionBaseUrl/getAttraction';
 }
