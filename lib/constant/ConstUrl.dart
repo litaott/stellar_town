@@ -11,6 +11,7 @@ class ConstUrl {
   /// 服务器
   // static const String baseUrl = 'http://49ilim5biema.xiaomiqiu.com';
   static const String baseUrl = 'http://101.37.252.1:8080';
+  //static const String baseUrl = 'http://192.168.31.119:8080';
   //static const String baseUrl = 'http://10.128.147.181:8080';
 
   /// 用户相关

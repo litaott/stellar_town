@@ -36,7 +36,7 @@ class HttpUtil {
   static Dio formDataInstance() {
     final dio = Dio(defaultOptions);
     String randomStr = randomAlphaNumeric(10);
-    dio.options.contentType = 'multipart/form-data; boundary=----$randomStr';
+   // dio.options.contentType = 'multipart/form-data; boundary=----$randomStr';
     dio.options.headers['Authorization'] = token;
     return dio;
   }

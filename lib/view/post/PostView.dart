@@ -57,11 +57,17 @@ class PostViewState extends State<PostView> {
       home:Scaffold(
           appBar: AppBar(
             title:InkWell(
-              child: const Text('返回'),
+              child: Container(color: Colors.transparent,child: const Text('返回')),
               onTap: () {Navigator.pop(context);},
             ),//返回,
           ),
-          body:Padding(
+          body:Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/image/default.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
             padding: const EdgeInsets.all(16.0),
             child: ListView(
               children: [
