@@ -20,7 +20,7 @@ class ConstUrl {
   static const String login = '$userBaseUrl/login';
   static const String getUserInfo = '$userBaseUrl/getUserInfo';
   static const String logout = '$userBaseUrl/logout';
-  static const String updateUserInfo = '$userBaseUrl/updateUserInfo';
+  //static const String updateUserInfo = '$userBaseUrl/updateUserInfo';
   static const String getUserInfoById = '$userBaseUrl/getUserInfoById';
   static const String followUser = '$userBaseUrl/followUser';
   static const String unFollowUser = '$userBaseUrl/unFollowUser';
@@ -28,7 +28,17 @@ class ConstUrl {
   static const String getOthersFollow = '$userBaseUrl/getOthersFollow';
   static const String getFans = '$userBaseUrl/getFans';
   static const String getOthersFans = '$userBaseUrl/getFans';
+
+  static const String updateUserAddress = '$userBaseUrl/updateUserAddress';
+  static const String updateUserSignature = '$userBaseUrl/updateUserSignature';
+  static const String updateGender = '$userBaseUrl/updateGender';
+  static const String updateAge = '$userBaseUrl/updateAge';
+  static const String updateUsername = '$userBaseUrl/updateUsername';
+  static const String donate = '/donate/info';
+
+
   static const String isFollowed = '$userBaseUrl/isFollowed';
+
 
   /// 帖子相关
   static const String postBaseUrl = '/api/v1/forum';
@@ -78,4 +88,8 @@ class ConstUrl {
   static const String attractionBaseUrl = '/api/v1/attraction';
   static const String getAttractionByCityName =
       '$attractionBaseUrl/getAttraction';
+
+  /// AI相关
+  static const String skyTransferBaseUrl = 'http://i-2.gpushare.com:28927/api';
+  static const String getSkyTransfer = '$skyTransferBaseUrl/sky-transfer';
 }

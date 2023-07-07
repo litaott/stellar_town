@@ -14,13 +14,16 @@ class ColorTheme {
   static const Color lightBlue = Color(0xFF21CCF3);
 
   ///深蓝色
-  static const Color deepBlue = Color(0xFF2144F3);
+  static const Color deepBlue = Color(0xFF2177F3);
 
   ///青色
   static const Color cyan = Color(0xFF21FFF3);
 
   ///浅浅蓝色
   static const Color moreLightBlue = Color(0x7700FFFF);
+
+  ///深深蓝色
+  static const Color moreDeepBlue = Color(0xFF2100F3);
 
   static const Color sliver = Color(0xFF87ceeb);
 }

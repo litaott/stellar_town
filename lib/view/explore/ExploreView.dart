@@ -19,6 +19,7 @@ import 'package:stellar_town/theme/ColorTheme.dart';
 import 'package:stellar_town/theme/TextStyleTheme.dart';
 import 'package:stellar_town/util/HttpUtil.dart';
 import 'package:stellar_town/view/explore/AttractionView.dart';
+import 'package:stellar_town/view/explore/SkyTransferView.dart';
 
 import '../../component/explore/TimeAxis.dart';
 
@@ -48,7 +49,7 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
   void initState() {
     initAnimations();
 
-    // resetAllInfo();
+    resetAllInfo();
 
     super.initState();
   }
@@ -81,6 +82,7 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
       home: Scaffold(
         appBar: buildAppBar(),
         body: PageView(
+          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.vertical,
           children: [
             SafeArea(
@@ -89,7 +91,10 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
                 children: [
                   buildTitle(),
                   buildCards(),
-                  buildAxis(),
+                  Transform.translate(
+                    offset: Offset(dateIn.value, 0),
+                    child: buildAxis(),
+                  ),
                 ],
               ),
             ),
@@ -229,7 +234,7 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
       leading: IconButton(
         onPressed: pickCity,
         icon: const Icon(
-          Icons.location_on_outlined,
+          Icons.my_location_outlined,
           color: Colors.white,
         ),
       ),
@@ -243,12 +248,25 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
         ),
       ),
       title: const Center(child: Text('探索')),
-      actions: const [
-        IconButton(
-          onPressed: null,
-          icon: Icon(
-            Icons.more_vert_rounded,
-            color: Colors.white,
+      actions: [
+        InkWell(
+          onTap: () {
+            // Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const SkyTransferView();
+                },
+              ),
+            );
+          },
+          child: const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'AI',
+              style: TextStyle(fontSize: 20),
+            ),
           ),
         ),
       ],

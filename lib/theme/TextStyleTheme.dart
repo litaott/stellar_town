@@ -48,37 +48,62 @@ class TextStyleTheme {
 
   ///帖子地点
   static const TextStyle postPlaceStyle = TextStyle(
-    color:Colors.grey,
+    color: Colors.grey,
     fontSize: 10,
   );
-  
+
+  ///当前日期
   static const TextStyle dateStyle = TextStyle(
     color: Colors.black,
     fontSize: 16,
     letterSpacing: 4,
   );
 
+  ///距离
+  static const TextStyle distanceStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 16,
+  );
+
+  ///景点名
+  static const TextStyle attractionNameStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 36,
+    fontWeight: FontWeight.bold,
+  );
+
+  ///城市名
   static const TextStyle cityStyle = TextStyle(
     color: Colors.black,
     fontSize: 48,
     fontWeight: FontWeight.bold,
   );
 
+  ///当前气温
   static const TextStyle tempStyle = TextStyle(
     color: Colors.black,
     fontSize: 54,
   );
 
+  ///当前天气信息
   static const TextStyle weatherTextStyle = TextStyle(
     color: Colors.black,
     fontSize: 20,
   );
 
+  ///景点简介
+  static const TextStyle introductionStyle = TextStyle(
+    color: Colors.black,
+    fontSize: 18,
+  );
+
+  ///天气卡片内容
   static const TextStyle infoCardStyle = TextStyle(
     color: Colors.white,
     fontSize: 18,
   );
 
+  ///天气卡片标题
   static const TextStyle cardTitleStyle = TextStyle(
     color: Colors.white,
     fontSize: 24,

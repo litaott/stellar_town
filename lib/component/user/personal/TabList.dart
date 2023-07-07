@@ -81,8 +81,8 @@ class TabListState extends State<TabList> with SingleTickerProviderStateMixin {
             child: TabBarView(
               controller: tabController,
               children: [
-                const Center(child: Text('发布')),
-                const Center(child: Text('点赞')),
+                const Center(child: Text('还没有发布过帖子哦~')),
+                const Center(child: Text('还没有点赞过帖子哦~')),
 
                 /// 关注列表
                 FutureBuilder<List<User>>(

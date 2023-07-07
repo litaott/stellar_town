@@ -33,6 +33,9 @@ class AttractionMapper extends ClassMapperBase<Attraction> {
   static String _$address(Attraction v) => v.address;
   static const Field<Attraction, String> _f$address =
       Field('address', _$address, opt: true, def: '---');
+  static String _$distance(Attraction v) => v.distance;
+  static const Field<Attraction, String> _f$distance =
+      Field('distance', _$distance, opt: true, def: '---');
   static String _$introduction(Attraction v) => v.introduction;
   static const Field<Attraction, String> _f$introduction =
       Field('introduction', _$introduction, opt: true, def: '---');
@@ -42,6 +45,7 @@ class AttractionMapper extends ClassMapperBase<Attraction> {
     #image: _f$image,
     #name: _f$name,
     #address: _f$address,
+    #distance: _f$distance,
     #introduction: _f$introduction,
   };
 
@@ -50,6 +54,7 @@ class AttractionMapper extends ClassMapperBase<Attraction> {
         image: data.dec(_f$image),
         name: data.dec(_f$name),
         address: data.dec(_f$address),
+        distance: data.dec(_f$distance),
         introduction: data.dec(_f$introduction));
   }
 
@@ -102,7 +107,12 @@ extension AttractionValueCopy<$R, $Out>
 
 abstract class AttractionCopyWith<$R, $In extends Attraction, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({String? image, String? name, String? address, String? introduction});
+  $R call(
+      {String? image,
+      String? name,
+      String? address,
+      String? distance,
+      String? introduction});
   AttractionCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -119,11 +129,13 @@ class _AttractionCopyWithImpl<$R, $Out>
           {String? image,
           String? name,
           String? address,
+          String? distance,
           String? introduction}) =>
       $apply(FieldCopyWithData({
         if (image != null) #image: image,
         if (name != null) #name: name,
         if (address != null) #address: address,
+        if (distance != null) #distance: distance,
         if (introduction != null) #introduction: introduction
       }));
   @override
@@ -131,6 +143,7 @@ class _AttractionCopyWithImpl<$R, $Out>
       image: data.get(#image, or: $value.image),
       name: data.get(#name, or: $value.name),
       address: data.get(#address, or: $value.address),
+      distance: data.get(#distance, or: $value.distance),
       introduction: data.get(#introduction, or: $value.introduction));
 
   @override
