@@ -251,7 +251,6 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
       actions: [
         InkWell(
           onTap: () {
-            // Navigator.pop(context);
             Navigator.push(
               context,
               MaterialPageRoute(

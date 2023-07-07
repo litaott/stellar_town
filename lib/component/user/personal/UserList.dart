@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/entity/user/User.dart';
+import 'package:stellar_town/view/user/PersonalPageView.dart';
 
 /// 用户列表组件
 /// @author tt
@@ -49,11 +50,23 @@ class UserListTileState extends State<UserListTile> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        foregroundImage: NetworkImage(user.avatar),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return PersonalPageView(user: user);
+            },
+          ),
+        );
+      },
+      child: ListTile(
+        leading: CircleAvatar(
+          foregroundImage: NetworkImage(user.avatar),
+        ),
+        title: Center(child: Text(user.username)),
       ),
-      title: Center(child: Text(user.username)),
     );
   }
 }

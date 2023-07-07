@@ -32,6 +32,16 @@ class PersonalPageViewState extends State<PersonalPageView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  BackButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
               SizedBox(
                 width: screenWidth,
                 height: 20,
