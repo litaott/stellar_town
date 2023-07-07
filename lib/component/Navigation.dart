@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/view/explore/ExploreView.dart';
+import 'package:stellar_town/view/post/PostHomeView.dart';
 import 'package:stellar_town/view/user/PersonalView.dart';
-
-import '../view/post/PostHomeView.dart';
 
 /// 底部导航栏组件
 /// @author tt

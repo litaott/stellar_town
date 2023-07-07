@@ -49,7 +49,7 @@ class ExploreViewState extends State<ExploreView> with AnimationMixin {
   void initState() {
     initAnimations();
 
-    // resetAllInfo();
+    resetAllInfo();
 
     super.initState();
   }
