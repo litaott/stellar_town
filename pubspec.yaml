@@ -33,6 +33,7 @@ dependencies:
 
   # 网络通信
   dio: ^4.0.0
+  http: ^1.0.0
 
   # 全局访问
   shared_preferences: ^2.1.2
@@ -65,6 +66,9 @@ dependencies:
   smooth_page_indicator: ^1.1.0
 
   image_picker: ^0.8.4+3
+
+  # 随机数
+  random_string: ^2.3.1
 
 
   # The following adds the Cupertino Icons font to your application.

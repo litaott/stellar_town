@@ -48,8 +48,7 @@ class PostOwnerState extends State<PostOwner>{
     Response response = await HttpUtil.getJson(
         '${ConstUrl.isLiked}?postId=${widget.postId}');
     if (response.data['code'] ~/ 100 == 2) {
-      _isLiked = response.data['data'];
-      setState(() {});
+      setState(() {_isLiked = response.data['data'];});
       log('获取是否点赞成功');
     } else {
       log('获取是否点赞失败');
@@ -62,7 +61,7 @@ class PostOwnerState extends State<PostOwner>{
         '${ConstUrl.isFollowed}?followId=${widget.userId}');
     if (response.data['code'] ~/100== 2) {
       _isFollowed = response.data['data'];
-      setState(() {});
+      setState(() {_isFollowed = response.data['data'];});
       log('获取是否关注成功');
     } else {
       log('获取是否关注失败');
@@ -98,7 +97,7 @@ class PostOwnerState extends State<PostOwner>{
   ///点赞
   void _toggleLikeState()async {
     Map body = {
-      'postId': widget.postId,
+      'id': widget.postId,
     };
     if (_isLiked) {
       log('发送取消点赞请求');
@@ -153,7 +152,7 @@ class PostOwnerState extends State<PostOwner>{
                 Expanded(
                   child: Container(
                       alignment: Alignment.centerLeft,
-                      child: Text(widget.username, style: const TextStyle(fontSize: 19,),)),
+                      child: Text(widget.username, style: const TextStyle(fontSize: 19,color:Colors.white),)),
                   ),///名字
                 Expanded(
                   child: Container(
@@ -165,13 +164,13 @@ class PostOwnerState extends State<PostOwner>{
                           Icon(
                             _isFollowed?Icons.star:Icons.star_border,
                             size: 15,
-                            color: Colors.red,
+                            color: Colors.yellow[800],
                           ),
                           Text(
                             _isFollowed?'已关注':'关注',
                             style:TextStyle(
                               fontSize: 10,
-                              color: _isFollowed?Colors.black12:Colors.black
+                              color: _isFollowed?Colors.black:Colors.yellow[800]
                             ),
                           ),
                         ],
@@ -192,23 +191,23 @@ class PostOwnerState extends State<PostOwner>{
                 child: Align(
                   alignment: Alignment.centerRight,
                   child:SizedBox(
-                    child: Text(likeCount.toString()),
+                    child: Text(likeCount.toString(),style: TextStyle(color:Colors.yellow[300] ),),
                   ),
                 ),
-              ),
+              ),///点赞数
               SizedBox(
                 width: 20,
                 height: 50,
                 child: IconButton(
                   padding: const EdgeInsets.all(0),
                   alignment: Alignment.centerRight,
-                  icon: (isLiked
+                  icon: (_isLiked
                       ? const Icon(Icons.star)
                       : const Icon(Icons.star_border)),
-                  color: Colors.red[500],
-                  onPressed: toggleLikeState,
+                  color: Colors.yellow[300],
+                  onPressed: _toggleLikeState,
                 ),
-              ),
+              ),///点赞图标
             ],
           ),///喜欢
         ],
@@ -216,3 +215,4 @@ class PostOwnerState extends State<PostOwner>{
     );
   }
 }
+

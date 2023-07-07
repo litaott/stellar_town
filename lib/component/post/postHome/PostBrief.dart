@@ -90,7 +90,20 @@ class _PostBriefState extends State<PostBrief>{
       child:Column(
         children: [
           Container(
-            color: Colors.blue,
+
+              //color:const Color(0xFF7639A8).withOpacity(0.2), // 定义透明度为0.2的星空蓝紫色
+              //color: Colors.blue.withOpacity(0.5), // 设置蓝色并调整透明度
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment.center,
+                radius: 1.0,
+                colors: [
+                  Colors.blue.withOpacity(0.4),
+                  Colors.purple.withOpacity(0.4),
+                ],
+              ),
+            ),
+
             padding:const EdgeInsets.all(5.0) ,
             child: Column(
               children: [

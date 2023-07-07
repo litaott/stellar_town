@@ -369,7 +369,7 @@ packages:
     source: hosted
     version: "2.3.1"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
@@ -664,6 +664,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.3"
+  random_string:
+    dependency: "direct main"
+    description:
+      name: random_string
+      sha256: "03b52435aae8cbdd1056cf91bfc5bf845e9706724dd35ae2e99fa14a1ef79d02"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.3.1"
   shared_preferences:
     dependency: "direct main"
     description:

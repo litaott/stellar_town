@@ -27,7 +27,7 @@ class PostHomeTopState extends State<PostHomeTop> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const PostingView()),
+                MaterialPageRoute(builder: (context) => PostingView()),
               );
             },// null disables the button
         ),

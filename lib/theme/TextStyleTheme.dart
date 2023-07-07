@@ -36,13 +36,13 @@ class TextStyleTheme {
 
   ///帖子标题
   static const TextStyle postTitleStyle = TextStyle(
-    color: Colors.black,
+    color: Color(0xC2FFFFFF),
     fontSize: 32,
   );
 
   ///帖子内容
   static const TextStyle postContentStyle = TextStyle(
-    color: Colors.black,
+    color: Color(0xFFDADACE),
     fontSize: 15,
   );
 

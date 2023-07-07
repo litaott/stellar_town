@@ -13,6 +13,7 @@ class PostingImageInput extends StatefulWidget {
 
   @override
   PostingImageInputState createState() => PostingImageInputState();
+
 }
 
 class PostingImageInputState extends State<PostingImageInput> {

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:random_string/random_string.dart';
 import 'package:stellar_town/constant/ConstUrl.dart';
 
 /// Http请求工具类
@@ -31,7 +32,8 @@ class HttpUtil {
 
   static Dio formDataInstance() {
     final dio = Dio(defaultOptions);
-    dio.options.contentType = 'multipart/form-data';
+    String randomStr = randomAlphaNumeric(10);
+   // dio.options.contentType = 'multipart/form-data; boundary=----$randomStr';
     dio.options.headers['Authorization'] = token;
     return dio;
   }
