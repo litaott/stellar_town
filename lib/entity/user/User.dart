@@ -19,7 +19,7 @@ class User with UserMappable {
   int age; //年龄
   String signature; //个性签名
   String followNumber; //关注数
-  String fansNumber;
+  String fansNumber; //粉丝数
 
   User({
     this.id = 0,

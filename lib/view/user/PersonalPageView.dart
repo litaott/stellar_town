@@ -15,7 +15,7 @@ class PersonalPageView extends StatefulWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final User user; //当前页面展示的用户
 
   @override
   PersonalPageViewState createState() => PersonalPageViewState();
@@ -24,12 +24,7 @@ class PersonalPageView extends StatefulWidget {
 class PersonalPageViewState extends State<PersonalPageView> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
+    changeSystemStatusBar();
 
     return MaterialApp(
       home: Scaffold(
@@ -56,6 +51,16 @@ class PersonalPageViewState extends State<PersonalPageView> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  /// 修改系统状态栏颜色
+  void changeSystemStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
       ),
     );
   }

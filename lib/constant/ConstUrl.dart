@@ -27,12 +27,16 @@ class ConstUrl {
   static const String getOthersFollow = '$userBaseUrl/getOthersFollow';
   static const String getFans = '$userBaseUrl/getFans';
   static const String getOthersFans = '$userBaseUrl/getFans';
+
   static const String updateUserAddress = '$userBaseUrl/updateUserAddress';
   static const String updateUserSignature = '$userBaseUrl/updateUserSignature';
   static const String updateGender = '$userBaseUrl/updateGender';
   static const String updateAge = '$userBaseUrl/updateAge';
   static const String updateUsername = '$userBaseUrl/updateUsername';
   static const String donate = '/donate/info';
+
+
+  static const String isFollowed = '$userBaseUrl/isFollowed';
 
 
   /// 帖子相关
@@ -42,7 +46,11 @@ class ConstUrl {
   static const String getPost = '$postBaseUrl/getPost';
   static const String localRecommendation = '$postBaseUrl/localRecommendation';
   static const String recommendation = '$postBaseUrl/recommendation';
+  static const String unLike = '$postBaseUrl/unLike';
 
+  ///点赞相关
+  static const String likeBaseUrl = '/api/v1/like';
+  static const String isLiked = '$likeBaseUrl/isLiked';
 
   /// 图片相关
   static const String imageBaseUrl = '/api/v1/minio/upload';
@@ -79,4 +87,8 @@ class ConstUrl {
   static const String attractionBaseUrl = '/api/v1/attraction';
   static const String getAttractionByCityName =
       '$attractionBaseUrl/getAttraction';
+
+  /// AI相关
+  static const String skyTransferBaseUrl = 'http://i-2.gpushare.com:28927/api';
+  static const String getSkyTransfer = '$skyTransferBaseUrl/sky-transfer';
 }

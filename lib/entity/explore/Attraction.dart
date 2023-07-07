@@ -12,12 +12,14 @@ class Attraction with AttractionMappable {
   String image; // 图片
   String name; // 名称
   String address; // 地址
+  String distance; //距离
   String introduction; // 介绍
 
   Attraction({
     this.image = ConstUrl.defaultAvatar,
     this.name = '---',
     this.address = '---',
+    this.distance = '1437.14371437',
     this.introduction = '---',
   });
 

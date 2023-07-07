@@ -64,7 +64,14 @@ dependencies:
   # 页面切换
   smooth_page_indicator: ^1.1.0
 
+  # 图片选择器
   image_picker: ^0.8.4+3
+
+  # 十六进制编/解码
+  hex: ^0.2.0
+
+  # http
+  http: ^1.1.0
 
   # 随机数
   random_string: ^2.3.1

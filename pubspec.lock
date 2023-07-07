@@ -368,8 +368,16 @@ packages:
       url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
     source: hosted
     version: "2.3.1"
+  hex:
+    dependency: "direct main"
+    description:
+      name: hex
+      sha256: "4e7cd54e4b59ba026432a6be2dd9d96e4c5205725194997193bf871703b82c4a"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
@@ -669,7 +677,7 @@ packages:
     description:
       name: random_string
       sha256: "03b52435aae8cbdd1056cf91bfc5bf845e9706724dd35ae2e99fa14a1ef79d02"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.1"
   shared_preferences:
@@ -677,7 +685,7 @@ packages:
     description:
       name: shared_preferences
       sha256: "0344316c947ffeb3a529eac929e1978fcd37c26be4e8468628bac399365a3ca1"
-      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub/"
+      url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.2.0"
   shared_preferences_android:

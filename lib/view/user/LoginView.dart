@@ -24,10 +24,10 @@ class LoginView extends StatefulWidget {
 }
 
 class LoginViewState extends State<LoginView> {
-  TextEditingController idController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController idController = TextEditingController(); //用户名控制器
+  TextEditingController passwordController = TextEditingController(); //密码控制器
 
-  late String username, password;
+  late String username, password; //用户名、密码
 
   @override
   Widget build(BuildContext context) {
@@ -41,42 +41,9 @@ class LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const RollingBox(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextInput(
-                  controller: idController,
-                  hintText: '用户名',
-                  icon: Icons.account_circle,
-                ),
-                TextInput(
-                  controller: passwordController,
-                  hintText: '密码',
-                  icon: Icons.key,
-                  obscureText: true,
-                ),
-              ],
-            ),
-            GestureDetector(
-              onTap: login,
-              child: const CircleButton(
-                icon: Icons.arrow_forward_outlined,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const RegisterView(),
-                  ),
-                );
-              },
-              child: const Text(
-                '未拥有账号？点击注册',
-                style: TextStyleTheme.registerStyle,
-              ),
-            ),
+            buildTextInput(),
+            buildLoginButton(),
+            buildGoRegister(context),
             SizedBox(
               height: screenHeight * 0.1,
             ),
@@ -86,24 +53,78 @@ class LoginViewState extends State<LoginView> {
     );
   }
 
+  /// 输入框
+  Column buildTextInput() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        TextInput(
+          controller: idController,
+          hintText: '用户名',
+          icon: Icons.account_circle,
+        ),
+        TextInput(
+          controller: passwordController,
+          hintText: '密码',
+          icon: Icons.key,
+          obscureText: true,
+        ),
+      ],
+    );
+  }
+
+  /// 登录按钮
+  GestureDetector buildLoginButton() {
+    return GestureDetector(
+      onTap: login,
+      child: const CircleButton(
+        icon: Icons.arrow_forward_outlined,
+      ),
+    );
+  }
+
+  /// 跳转注册页面
+  GestureDetector buildGoRegister(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const RegisterView(),
+          ),
+        );
+      },
+      child: const Text(
+        '未拥有账号？点击注册',
+        style: TextStyleTheme.registerStyle,
+      ),
+    );
+  }
+
   ///登录响应函数
   void login() async {
     username = idController.text.toString();
     password = passwordController.text.toString();
-    Map body = {
-      'username': username,
-      'password': password,
-    };
-    Response response = await HttpUtil.post(ConstUrl.login, body);
-    body = response.data;
-    if (body['code'] ~/ 100 == 2) {
-      String tokenData = body['data']['token'];
-      HttpUtil.token = 'Bearer $tokenData';
-      User.currentUser = User.fromMap(body['data']['userInfo']);
-      //log(HttpUtil.token);
-      successDialog();
+
+    if (username == '') {
+      failDialog('用户名不能为空');
+    } else if (password == '') {
+      failDialog('密码不能为空');
     } else {
-      failDialog(body['message']);
+      Map body = {
+        'username': username,
+        'password': password,
+      };
+      Response response = await HttpUtil.post(ConstUrl.login, body);
+      body = response.data;
+      if (body['code'] ~/ 100 == 2) {
+        String tokenData = body['data']['token'];
+        HttpUtil.token = 'Bearer $tokenData';
+        User.currentUser = User.fromMap(body['data']['userInfo']);
+        successDialog();
+      } else {
+        failDialog(body['message']);
+      }
     }
   }
 

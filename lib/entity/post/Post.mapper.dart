@@ -33,22 +33,20 @@ class PostMapper extends ClassMapperBase<Post> {
   static const Field<Post, int> _f$likeCount =
       Field('likeCount', _$likeCount, opt: true, def: 0);
   static String _$title(Post v) => v.title;
-  static const Field<Post, String> _f$title = Field('title', _$title,
-      opt: true, def: '这是一个很长很长很长很长很长很长很长很长很长很长很长很长的标题');
+  static const Field<Post, String> _f$title =
+      Field('title', _$title, opt: true, def: '这是一个很短的标题');
   static String _$image(Post v) => v.image;
   static const Field<Post, String> _f$image =
-      Field('image', _$image, opt: true, def: 'assets/image/login.png');
+      Field('image', _$image, opt: true, def: '');
   static String _$content(Post v) => v.content;
-  static const Field<Post, String> _f$content = Field('content', _$content,
-      opt: true,
-      def:
-          '这里有很多很多很多很多很多很很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多多很多很多很很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多多很多很多很多很多很多很多很多很多很多很多很多很多很多很多很多回电话1好内容');
+  static const Field<Post, String> _f$content =
+      Field('content', _$content, opt: true, def: '');
   static String _$address(Post v) => v.address;
   static const Field<Post, String> _f$address =
       Field('address', _$address, opt: true, def: '湖北省武汉市武昌区珞珈山街道八一路299号');
   static String _$tag(Post v) => v.tag;
   static const Field<Post, String> _f$tag =
-      Field('tag', _$tag, opt: true, def: '星野摄影');
+      Field('tag', _$tag, opt: true, def: '');
 
   @override
   final Map<Symbol, Field<Post, dynamic>> fields = const {
