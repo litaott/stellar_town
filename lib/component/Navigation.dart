@@ -3,6 +3,7 @@ import 'package:stellar_town/view/explore/ExploreView.dart';
 import 'package:stellar_town/view/user/PersonalView.dart';
 
 import '../view/post/PostHomeView.dart';
+import '../view/user/DrawerView.dart';
 
 /// 底部导航栏组件
 /// @author tt
@@ -28,6 +29,7 @@ class NavigationState extends State<Navigation> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        drawer: DrawerView(),
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTabTapped,
