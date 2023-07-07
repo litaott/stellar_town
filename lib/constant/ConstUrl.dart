@@ -36,7 +36,6 @@ class ConstUrl {
   static const String localRecommendation = '$postBaseUrl/localRecommendation';
   static const String recommendation = '$postBaseUrl/recommendation';
 
-
   /// 图片相关
   static const String imageBaseUrl = '/api/v1/minio/upload';
   static const String uploadAvatar = '$imageBaseUrl/avatar';
@@ -72,4 +71,8 @@ class ConstUrl {
   static const String attractionBaseUrl = '/api/v1/attraction';
   static const String getAttractionByCityName =
       '$attractionBaseUrl/getAttraction';
+
+  /// AI相关
+  static const String skyTransferBaseUrl = 'http://i-2.gpushare.com:28927/api';
+  static const String getSkyTransfer = '$skyTransferBaseUrl/sky-transfer';
 }

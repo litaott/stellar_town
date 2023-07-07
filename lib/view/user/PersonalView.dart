@@ -19,12 +19,7 @@ class PersonalView extends StatefulWidget {
 class PersonalViewState extends State<PersonalView> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
+    changeSystemStatusBar();
 
     return MaterialApp(
       home: Scaffold(
@@ -51,6 +46,16 @@ class PersonalViewState extends State<PersonalView> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  /// 修改系统状态栏颜色
+  void changeSystemStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark,
       ),
     );
   }
