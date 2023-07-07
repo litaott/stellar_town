@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:random_string/random_string.dart';
 import 'package:stellar_town/constant/ConstUrl.dart';
 
 /// Http请求工具类
@@ -6,22 +7,24 @@ import 'package:stellar_town/constant/ConstUrl.dart';
 /// @date 2023-06-20
 
 class HttpUtil {
-  // Initialize the default options
+  /// 设置默认属性
   static final BaseOptions defaultOptions = BaseOptions(
     baseUrl: ConstUrl.baseUrl,
     connectTimeout: 5000,
     receiveTimeout: 5000,
   );
 
-  static String token = '';
+  /// token信息
+  static late String token;
 
-  // Create a new instance of Dio with custom options
+  /// 登陆注册所用示例（无token）
   static Dio noTokenInstance() {
     final dio = Dio(defaultOptions);
     dio.options.contentType = Headers.jsonContentType;
     return dio;
   }
 
+  /// json格式实例
   static Dio jsonInstance() {
     final dio = Dio(defaultOptions);
     dio.options.contentType = Headers.jsonContentType;
@@ -29,9 +32,11 @@ class HttpUtil {
     return dio;
   }
 
+  /// form-data格式实例
   static Dio formDataInstance() {
     final dio = Dio(defaultOptions);
-    dio.options.contentType = 'multipart/form-data';
+    String randomStr = randomAlphaNumeric(10);
+    dio.options.contentType = 'multipart/form-data; boundary=----$randomStr';
     dio.options.headers['Authorization'] = token;
     return dio;
   }

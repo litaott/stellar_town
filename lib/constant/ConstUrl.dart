@@ -77,4 +77,8 @@ class ConstUrl {
   static const String attractionBaseUrl = '/api/v1/attraction';
   static const String getAttractionByCityName =
       '$attractionBaseUrl/getAttraction';
+
+  /// AI相关
+  static const String skyTransferBaseUrl = 'http://i-2.gpushare.com:28927/api';
+  static const String getSkyTransfer = '$skyTransferBaseUrl/sky-transfer';
 }

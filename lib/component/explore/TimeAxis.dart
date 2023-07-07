@@ -50,7 +50,6 @@ PageController pageController =
 
 /// 创建时间轴滚动页面
 Widget buildAxis() {
-  /// 页面集合
   List<Widget> pages = [buildSpecialHourCard(), buildDawnHourCard()];
   return Container(
     width: width + 20,
