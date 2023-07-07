@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/view/explore/ExploreView.dart';
+import 'package:stellar_town/view/post/PostHomeView.dart';
 import 'package:stellar_town/view/user/PersonalView.dart';
+
 
 import '../view/post/PostHomeView.dart';
 import '../view/user/DrawerView.dart';

@@ -105,7 +105,7 @@ class SkyTransferViewState extends State<SkyTransferView> {
           items: const [
             DropdownMenuItem(
               value: '1',
-              child: Text('日落'),
+              child: Text('落日残阳'),
             ),
             DropdownMenuItem(
               value: '2',
@@ -113,15 +113,15 @@ class SkyTransferViewState extends State<SkyTransferView> {
             ),
             DropdownMenuItem(
               value: '3',
-              child: Text('飞船'),
+              child: Text('梦幻飞船'),
             ),
             DropdownMenuItem(
               value: '4',
-              child: Text('木星'),
+              child: Text('木星守护'),
             ),
             DropdownMenuItem(
               value: '5',
-              child: Text('晴天'),
+              child: Text('丝缕阳光'),
             ),
             DropdownMenuItem(
               value: '6',
@@ -129,7 +129,7 @@ class SkyTransferViewState extends State<SkyTransferView> {
             ),
             DropdownMenuItem(
               value: '7',
-              child: Text('蓝调'),
+              child: Text('蓝色幻想'),
             ),
           ],
         ),
