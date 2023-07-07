@@ -1,13 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/post/postDetail/PostContent.dart';
 import 'package:stellar_town/component/post/postDetail/PostOwner.dart';
 import 'package:stellar_town/component/post/postDetail/PostTag.dart';
-
-import '../../constant/ConstUrl.dart';
 import '../../entity/post/Post.dart';
 import '../../main.dart';
-import '../../util/HttpUtil.dart';
 
 
 /// 帖子详细信息界面
@@ -15,9 +11,28 @@ import '../../util/HttpUtil.dart';
 /// @date 2023-07-05
 
 class PostView extends StatefulWidget {
-  PostView({Key? key, required this.postId}) : super(key: key);
+  PostView({Key? key,
+    required this.postId,
+    required this.title,
+    required this.tag,
+    required this.image,
+    required this.address,
+    required this.content,
+    required this.userId,
+    required this.avatar,
+    required this.likeCount,
+    required this.userName}) : super(key: key);
 
   final int postId;
+  final int userId;
+  final String title;
+  final String tag;
+  final String image;
+  final String address;
+  final String content;
+  final String avatar;
+  final String userName;
+  final int likeCount;
 
   Post post = Post();
 
@@ -27,10 +42,13 @@ class PostView extends StatefulWidget {
 
 class PostViewState extends State<PostView> {
 
-  void posting() async {
-    Response response = await HttpUtil.postJson(ConstUrl.post, widget.postId as Map);
-    widget.post= Post.fromMap(response.data['data']);
-  }
+  isTag() {
+    if (widget.tag != "" && widget.tag != null) {
+      return PostTag(tag: widget.tag,);
+    } else {
+      return Container();
+    }
+  }//有标签输出标签
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +65,19 @@ class PostViewState extends State<PostView> {
             padding: const EdgeInsets.all(16.0),
             child: ListView(
               children: [
-                PostOwner(),//贴主信息
+                PostOwner(
+                  postId: widget.postId,
+                  userId: widget.userId,
+                  avatar: widget.avatar,
+                  likeCount: widget.likeCount,
+                  username: widget.userName,),//贴主信息
                 PostContent(
-                  title:widget.post.title,
-                  content:widget.post.content,
-                  place: widget.post.address,
+                  title:widget.title,
+                  content:widget.content,
+                  place: widget.address,
+                  image: widget.image,
                 ),//标题,内容,地点
-                PostTag(tag: widget.post.tag,),//标签
+                isTag(),//标签
               ],
             ),
           )

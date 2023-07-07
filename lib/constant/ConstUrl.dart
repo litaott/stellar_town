@@ -27,6 +27,7 @@ class ConstUrl {
   static const String getOthersFollow = '$userBaseUrl/getOthersFollow';
   static const String getFans = '$userBaseUrl/getFans';
   static const String getOthersFans = '$userBaseUrl/getFans';
+  static const String isFollowed = '$userBaseUrl/isFollowed';
 
   /// 帖子相关
   static const String postBaseUrl = '/api/v1/forum';
@@ -35,7 +36,11 @@ class ConstUrl {
   static const String getPost = '$postBaseUrl/getPost';
   static const String localRecommendation = '$postBaseUrl/localRecommendation';
   static const String recommendation = '$postBaseUrl/recommendation';
+  static const String unLike = '$postBaseUrl/unLike';
 
+  ///点赞相关
+  static const String likeBaseUrl = '/api/v1/like';
+  static const String isLiked = '$likeBaseUrl/isLiked';
 
   /// 图片相关
   static const String imageBaseUrl = '/api/v1/minio/upload';
