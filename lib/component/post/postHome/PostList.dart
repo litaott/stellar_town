@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:stellar_town/main.dart';
 import '../../../constant/ConstUrl.dart';
 import '../../../entity/post/Post.dart';
 import '../../../util/HttpUtil.dart';
@@ -33,22 +34,22 @@ class PostListState extends State<PostList> {
 
   ///获取数据
   postHome() async {
+    log('获取帖子列表数据');
+    log('[]');
+    log('[]');
+
     Response response = await HttpUtil.getJson(ConstUrl.recommendation);
     if (response.data['code'] / 100 == 2) {
-      List<dynamic> maps;
+      List maps;
       maps = response.data['data'];
-
       for (int i = 0; i < maps.length; i++) {
         data.add(Post.fromMap(maps[i]));
         isLoading=false;
       }
-      //log(response.data['data']['']);
-      log('获取数据成功');
+      log('获取帖子列表成功');
       setState(() {});
     } else {
-      log('fail');
-      log('获取数据失败');
-      //throw Exception('获取数据失败');
+      log('获取帖子列表失败');
     }
   }
 
@@ -66,12 +67,18 @@ class PostListState extends State<PostList> {
             return Container();
           }
         }//到底时显示圆形旋转条
-        return PostBrief(
-          postId: data[index].id,
-          image: data[index].image,
-          title: data[index].title,
-          tag: data[index].tag,
-          userId: data[index].userId,
+        return SizedBox(
+          width: screenWidth*0.8,
+          child: PostBrief(
+            postId: data[index].id,
+            image: data[index].image,
+            title: data[index].title,
+            tag: data[index].tag,
+            content:data[index].content,
+            userId: data[index].userId,
+            place:data[index].address,
+            likeCount:data[index].likeCount,
+          ),
         );
       },
     );
@@ -81,7 +88,7 @@ class PostListState extends State<PostList> {
     final scrollController = ScrollController();
     final maxScroll = scrollController.position.maxScrollExtent;
     final currentScroll = scrollController.position.pixels;
-    const delta = 200.0; // 距离底部多少像素时触发加载更多
+    const delta = 10.0; // 距离底部多少像素时触发加载更多
 
     if (maxScroll - currentScroll <= delta) {
       postHome();

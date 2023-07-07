@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stellar_town/component/post/postHome/PostHomeTop.dart';
 import 'package:stellar_town/component/post/postHome/PostList.dart';
+import 'package:stellar_town/main.dart';
 import '../../entity/post/Post.dart';
 
 /// 帖子总览界面
@@ -25,9 +26,22 @@ class PostHomeViewState extends State<PostHomeView> {
     return MaterialApp(
       home:Scaffold(
         appBar: AppBar(
-          title: const PostHomeTop(),
+          title:const PostHomeTop(),
         ),
-        body:PostList(),
+        body:Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/image/default.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: SizedBox(
+              width: screenWidth*0.96,
+                child: PostList()
+            ),
+          ),
+        ),
       ),
     );
   }
